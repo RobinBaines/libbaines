@@ -15,5 +15,5 @@ Support for Filtering, Sorting and Editing of data,
   Filtered and sorted data export to Excel.
   Help textbox in every form.
 
-To create a MSQL database see SQL\readme.sql.
+To create a MSQL database see SQL\readme.txt.
 To see an example op TestApp/TestApp.sln.
