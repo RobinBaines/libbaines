@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6BA3A8B2-83DF-4180-8921-F5C4A91CCE3E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Utilities</RootNamespace>
+    <AssemblyName>Utilities</AssemblyName>
+    <MyType>Windows</MyType>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Utilities.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Utilities.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ExcelInterface, Version=1.0.0.13, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExcelInterface\bin\Release\ExcelInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="b_app_color.vb" />
+    <Compile Include="b_app_parameter.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clBackColor.vb" />
+    <Compile Include="clCalendarColumn.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cLogging.vb" />
+    <Compile Include="clPrintLabels.vb" />
+    <Compile Include="clSortedList.vb" />
+    <Compile Include="clTime.vb" />
+    <Compile Include="ConnectionString.vb" />
+    <Compile Include="DeEnCode.vb" />
+    <Compile Include="dgvEnterEmail.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dgvPlus.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dgColumns.vb" />
+    <Compile Include="dgvEnter.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DialogSelectForms.Designer.vb">
+      <DependentUpon>DialogSelectForms.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogSelectForms.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAppLog.Designer.vb">
+      <DependentUpon>frmAppLog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAppLog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAppParameters.Designer.vb">
+      <DependentUpon>frmAppParameters.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAppParameters.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHelpText.Designer.vb">
+      <DependentUpon>frmHelpText.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHelpText.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProperties.designer.vb">
+      <DependentUpon>frmProperties.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmProperties.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStandard.designer.vb">
+      <DependentUpon>frmStandard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStandard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsrLog.Designer.vb">
+      <DependentUpon>frmUsrLog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUsrLog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenericForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOptions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gen_m_app_log.vb" />
+    <Compile Include="gen_TheDataSet_m_form.vb" />
+    <Compile Include="gen_TheDataSet_m_format.vb" />
+    <Compile Include="gen_TheDataSet_m_form_grp_groupbox.vb" />
+    <Compile Include="MetaDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MetaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MetaForms\ADHOCDataSet_v_adhoc_views.vb" />
+    <Compile Include="MetaForms\clParseSQL.vb" />
+    <Compile Include="MetaForms\frmADHOCViews.designer.vb">
+      <DependentUpon>frmADHOCViews.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MetaForms\frmADHOCViews.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MetaForms\frmMetaProc.Designer.vb">
+      <DependentUpon>frmMetaProc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MetaForms\frmMetaProc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MetaForms\frmMetaView.Designer.vb">
+      <DependentUpon>frmMetaView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MetaForms\frmMetaView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MetaForms\MetaDataSet_v_all_views_column.vb" />
+    <Compile Include="MetaForms\MetaData_v_INFORMATION_SCHEMA_ROUTINES.vb" />
+    <Compile Include="MetaForms\MetaData_v_referenced_objects.vb" />
+    <Compile Include="MetaForms\MetaData_v_referencing_objects.vb" />
+    <Compile Include="ModuleDates.vb" />
+    <Compile Include="m_helptext.vb" />
+    <Compile Include="TheDataSet_m_usr_change_log.vb" />
+    <Compile Include="TheDataSet_m_form_grp_log.vb" />
+    <Compile Include="PrintLabelDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintLabelDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PrintReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RegExUtilities.vb" />
+    <Compile Include="TheDataSet_m_form_tble_column__visibility.vb" />
+    <Compile Include="gen_TheDataSet_m_lang.vb" />
+    <Compile Include="gen_TheDataSet_m_txt.vb" />
+    <Compile Include="TheDataSet_m_usr.vb" />
+    <Compile Include="gen_TheDataSet_m_usr_log.vb" />
+    <Compile Include="TheDataSet_v_txt_header.vb" />
+    <Compile Include="gen_TheDataSet_v_usr_log.vb" />
+    <Compile Include="TheDataSet_m_form_grp.vb" />
+    <Compile Include="TheDataSet_m_form_tble.vb" />
+    <Compile Include="gen_TheDataSet_m_grp.vb" />
+    <Compile Include="gen_TheDataSet_m_tble.vb" />
+    <Compile Include="TheDataSet_m_tble_column.vb" />
+    <Compile Include="TheDataSet_v_tble_column_header.vb" />
+    <Compile Include="MainDefinitions.vb" />
+    <Compile Include="MainForm.Designer.vb">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManage.Designer.vb">
+      <DependentUpon>frmManage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmManage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuleStatics.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ToolStripCheckBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utilities.vb" />
+    <Compile Include="TheDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TheDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TheDataSet.vb">
+      <DependentUpon>TheDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ValidateFile.vb" />
+    <Compile Include="WindowHandleCounter.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DialogSelectForms.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DialogSelectForms.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAppLog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAppLog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAppParameters.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAppParameters.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmhelpText.resx">
+      <DependentUpon>frmHelpText.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManage.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmManage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProperties.resx">
+      <DependentUpon>frmProperties.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStandard.resx">
+      <DependentUpon>frmStandard.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUsrLog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmUsrLog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOptions.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmOptions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenericForm.resx">
+      <DependentUpon>GenericForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainDefinitions.resx">
+      <DependentUpon>MainDefinitions.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MetaForms\frmADHOCViews.resx">
+      <DependentUpon>frmADHOCViews.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MetaForms\frmMetaProc.resx">
+      <DependentUpon>frmMetaProc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MetaForms\frmMetaView.resx">
+      <DependentUpon>frmMetaView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="MetaDataSet.xsc">
+      <DependentUpon>MetaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MetaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MetaDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MetaDataSet.xss">
+      <DependentUpon>MetaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="PrintLabelDataSet.xsc">
+      <DependentUpon>PrintLabelDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PrintLabelDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PrintLabelDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PrintLabelDataSet.xss">
+      <DependentUpon>PrintLabelDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TheDataSet.xsc">
+      <DependentUpon>TheDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TheDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TheDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TheDataSet.xss">
+      <DependentUpon>TheDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(SolutionDir)\$(ProjectName)\bin\$(ConfigurationName)\$(ProjectName).dll"  "c:\Projects\GIS\GisDLLs\"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,1054 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Utilities
+</name>
+</assembly>
+<members>
+<member name="T:Utilities.MetaDataSet.v_adhoc_view_columnsDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_adhoc_viewsDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_all_viewsDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_all_views_columnDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_referenced_objectsDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_referencing_objectsDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.typesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.ROUTINESDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.dm_sql_referencing_entitiesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.dm_sql_referenced_entitiesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.m_sql_charactersDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.m_keywordsDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_adhoc_view_columnsRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_adhoc_viewsRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_all_viewsRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_all_views_columnRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_referenced_objectsRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_referencing_objectsRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.typesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.ROUTINESRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.dm_sql_referencing_entitiesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.dm_sql_referenced_entitiesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.m_sql_charactersRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.m_keywordsRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_adhoc_view_columnsRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_adhoc_viewsRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_all_viewsRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_all_views_columnRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_referenced_objectsRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.MetaDataSet.v_referencing_objectsRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.MetaDataSet.typesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.MetaDataSet.ROUTINESRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.MetaDataSet.dm_sql_referencing_entitiesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.MetaDataSet.dm_sql_referenced_entitiesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.MetaDataSet.m_sql_charactersRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.MetaDataSet.m_keywordsRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.MetaDataSet">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.v_adhoc_view_columnsTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.v_adhoc_viewsTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.v_all_viewsTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.v_all_views_columnTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.v_referenced_objectsTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.v_referencing_objectsTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.typesTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.ROUTINESTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.dm_sql_referencing_entitiesTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.dm_sql_referenced_entitiesTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.m_sql_charactersTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.m_keywordsTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:Utilities.MetaDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(Utilities.MetaDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Update rows in top-down order.
+</summary>
+</member><member name="M:Utilities.MetaDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(Utilities.MetaDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Insert rows in top-down order.
+</summary>
+</member><member name="M:Utilities.MetaDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(Utilities.MetaDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Delete rows in bottom-up order.
+</summary>
+</member><member name="M:Utilities.MetaDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member><member name="M:Utilities.MetaDataSetTableAdapters.TableAdapterManager.UpdateAll(Utilities.MetaDataSet)">
+	<summary>
+Update all changes to the dataset.
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+	<summary>
+Update Order Option
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+	<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member><member name="T:Utilities.MetaDataSetTableAdapters.TableAdapterManager">
+	<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member><member name="T:Utilities.PrintLabelDataSet.b_labeltype_definitionDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.PrintLabelDataSet.v_labeltypeDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.PrintLabelDataSet.b_labeltype_definitionRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.PrintLabelDataSet.v_labeltypeRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.PrintLabelDataSet.b_labeltype_definitionRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.PrintLabelDataSet.v_labeltypeRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.PrintLabelDataSet">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:Utilities.PrintLabelDataSetTableAdapters.b_labeltype_definitionTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.PrintLabelDataSetTableAdapters.v_labeltypeTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:Utilities.PrintLabelDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(Utilities.PrintLabelDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Update rows in top-down order.
+</summary>
+</member><member name="M:Utilities.PrintLabelDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(Utilities.PrintLabelDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Insert rows in top-down order.
+</summary>
+</member><member name="M:Utilities.PrintLabelDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(Utilities.PrintLabelDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Delete rows in bottom-up order.
+</summary>
+</member><member name="M:Utilities.PrintLabelDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member><member name="M:Utilities.PrintLabelDataSetTableAdapters.TableAdapterManager.UpdateAll(Utilities.PrintLabelDataSet)">
+	<summary>
+Update all changes to the dataset.
+</summary>
+</member><member name="T:Utilities.PrintLabelDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+	<summary>
+Update Order Option
+</summary>
+</member><member name="T:Utilities.PrintLabelDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+	<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member><member name="T:Utilities.PrintLabelDataSetTableAdapters.TableAdapterManager">
+	<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member><member name="M:Utilities.MainForm.#ctor(System.Boolean)">
+	<summary>
+ 20100604 allow explicit starting of the thread.
+ </summary>
+	<param name="_blnStartThread"></param>
+	<remarks></remarks>
+</member><member name="M:Utilities.MainForm.NewInit">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:Utilities.MainForm.TheMenustrip(System.Windows.Forms.ToolStripItem[])">
+	<summary>
+ Allow user to add an item to the MenuStrip
+ </summary>
+	<param name="tsItems"></param>
+	<remarks></remarks>
+</member><member name="M:Utilities.MainForm.SwitchOffFile">
+	<summary>
+ Allow application to switch off main menu items. Do after check on visibility as that wil probably make the visible.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Utilities.MainForm.AddToolStripRange(System.Windows.Forms.ToolStripItem[])">
+	<summary>
+ 20091209 RPB added AddToolStripRange with list of ToolStripItems. This is to allow Toolstrip items after custom and generic ones.
+ </summary>
+	<param name="tsItems"></param>
+	<remarks></remarks>
+</member><member name="M:Utilities.MainForm.AddStatusStripItems">
+	<summary>
+ Add generic toolstrip items.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Utilities.MainForm.CheckFormVisibility">
+	<summary>
+ Check the form visibility using the security tables.
+ </summary>
+	<remarks>This gets called when switching to/from test database so the ToolTip texts are set the first
+ time and are used to look up the translation.</remarks>
+    'The ToolStripItem Available property is different from the Visible property in that Available indicates 
+    'whether the ToolStripItem is shown, while Visible indicates whether the ToolStripItem and 
+    'its parent are shown. 
+    'Setting either Available or Visible to true or false sets the other property to true or false.
+
+</member><member name="M:Utilities.MainForm.CloseAllForms">
+	<summary>
+ Used when switching to/from test database.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Utilities.MainForm.Init">
+	<summary>
+ Initialise all items.
+ </summary>
+	<remarks>Is called when program starts and when switching to/from test database.</remarks>
+</member><member name="M:Utilities.MainForm.DeSelectedFont(System.Windows.Forms.ToolStripItem)">
+	<summary>
+ Make font of Button normal instead of bold to indicate that form is no longer open.
+ </summary>
+	<param name="tsb"></param>
+	<remarks></remarks>
+</member><member name="M:Utilities.MainForm.MainForm_Load(System.Object,System.EventArgs)">
+	<summary>
+	</summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Utilities.MainForm.ShowForm(System.Windows.Forms.Form,System.String,System.String,Utilities.MainDefinitions,System.Collections.Generic.Dictionary{System.String,System.String})">
+	<summary>
+     Override this sub
+ to create the link between the menu name and the form to be shown.
+ </summary>
+	<param name="pParent"></param>
+	<param name="strHeader"></param>
+	<param name="strForm"></param>
+	<param name="MainDefs"></param>
+	<param name="Fields"></param>
+	<remarks></remarks>
+</member><member name="M:Utilities.MainForm.RefreshAll(System.String,System.String,System.Int64)">
+	<summary>
+ A public call asks the form to refresh if it recognises the strings.
+ Is called from the frmSemaphore.
+ 20150815 added parameter lsemaphore
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Utilities.MainForm.RefreshAll">
+	<summary>
+ A public call which will refresh all open forms.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Utilities.MainForm.Do_Audio">
+	<summary>
+ Check whether a form wants to have the audio file played. Set a flag so that the thread plays it.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Utilities.frmManage.CreateuserStatisticsBoxes(System.Int32)">
+	<summary>
+ The Users tab shows the User statistics in textboxes instead of a DataGridView.
+ This Sub builds the label/textboxes based on whether the associated DataGridView column is visible.
+ </summary>
+	<remarks></remarks>
+</member><member name="P:Utilities.frmStandard.Enable_ChkLevel_On_ChildControls">
+	<summary>
+  '20120516 Set to allow fine tuning of controls in the form.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Utilities.frmStandard.RefreshTheForm">
+	<summary>
+ Is called from MainFrom RefreshAll()
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Utilities.frmStandard.RefreshTheForm(System.Windows.Forms.Form,System.String,System.String,System.Int64)">
+ 20150815 added parameter lsemaphore
+
+</member><member name="M:Utilities.frmStandard.ResetTheCell(System.Windows.Forms.DataGridView,System.Windows.Forms.DataGridViewCell)">
+	<summary>
+ 20091130 RPB added ResetTheCell.
+ Use these to reset the cell after the parent has finished loading.
+ </summary>
+	<param name="dg"></param>
+	<param name="cTheCell"></param>
+	<remarks></remarks>
+</member><member name="M:Utilities.frmStandard.PrintDetailToExcel(System.String,System.Windows.Forms.DataGridView,System.Windows.Forms.DataGridView)">
+	<summary>
+ Print parent and 1 child
+ </summary>
+	<param name="strHeader"></param>
+	<param name="dgParent"></param>
+	<param name="dgChild1"></param>
+	<remarks></remarks>
+</member><member name="M:Utilities.frmStandard.CreateLabelAndTextBoxTooltips(System.Windows.Forms.Control.ControlCollection,System.Windows.Forms.Control,System.ComponentModel.IContainer,System.Boolean)">
+	<summary>
+ Get visibility etc from the Utilities form_tble_column table for the field if the control is bound.
+ Cast the control to find out what sort of control it is. Adjust visibility and then try to find the assoicated label adjusting it as well.
+ </summary>
+	<param name="Controls"></param>
+	<param name="ctl"></param>
+	<param name="LeafComponents"></param>
+	<remarks>Controls is explicitly the groupbox Controls declaration. The Form Groupbox is different but casts to the groupbox control.</remarks>
+</member><member name="M:Utilities.frmStandard.CreateTooltips(System.ComponentModel.IContainer)">
+	<summary>
+ Couple tooltips to Groupbox and labels so that a user can see the name of the field.
+ Translate groupbox name and label text.
+ Set the width of text and combo boxes.
+ Set the controls in a groupbox to read only if checked in m_form_grp_groupbox.
+ </summary>
+	<param name="LeafComponents"></param>
+	<remarks>Add the dialog name and the dialog name, groupbox to the list of form_grp_groupbox. </remarks>
+</member><member name="P:Utilities.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Utilities.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:Utilities.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:Utilities.dgvEnter.DragAndDropUpdateAfter">
+	<summary>
+ Default behaviour is to update the complete table to save Source and Destination.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgvEnter.DragAndDropColumnIsASource(System.Int32)">
+	<summary>
+ Default behaviour is that all columns in the grid may be a Source.
+ Override to get more control.
+ </summary>
+	<param name="iColumn"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgvEnter.DragAndDropColumnIsADestination(System.Int32)">
+	<summary>
+ Default behaviour is that all columns may be a Destination.
+ Override to get more control over which columns may be a destination.
+ Use blnMeIsSource which is true if the Source column is from the same grid as the Destination.
+ If blnMeIsSource is true then use SourceColumn to identify the Source column.
+ </summary>
+	<param name="iColumnIndex"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgvEnter.DragAndDropIsMove(System.Int32)">
+	<summary>
+ Default behaviour is to move from Source to Destination.
+ Set blnMove = false to copy from Source to Destination for all Source columns.
+ Get more control over which source columns are copied and which are moved by overriding this. 
+ </summary>
+	<param name="iColumnIndex"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgColumns.GetFirstVisibleColumn">
+	<summary>
+ Lookup the name of the first visible column in the datagrid.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgColumns.AdjustHorizontalAlignment">
+	<summary>
+ 20100122 RPB created AdjustHorizontalAlignment()
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgColumns.PutColumnsInGrid">
+	<summary>
+ 20100122 RPB modified PutColumnsInGrid by making call to AdjustHorizontalAlignment()
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgColumns.strGetEfficientSelect">
+	<summary>
+ Construct a select statement from the visible fields. Can be used to construct a 'select * from xx where yy' based on filter settings.
+ Is useful if there is alot of data and the filter settings are made before the FillTableAdapter() call; see Pricing Tool for an example.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgColumns.DefineColumn(System.Windows.Forms.DataGridViewColumn,System.String,System.Boolean,System.Int32)">
+	<summary>
+ 20120212 Simplified and preferred public version.
+ </summary>
+</member><member name="M:Utilities.dgColumns.AdjustFilterBoxesInGB(System.Int32)">
+	<summary>
+	</summary>
+	<param name="iScrollposition"></param>
+	<returns>The width required for all the filters.</returns>
+	<remarks></remarks>
+</member><member name="F:Utilities.dgColumns.iScrollPosition">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgColumns.SelectFirstTb">
+	<summary>
+ Call to give the first visible filter textbox the focus. The user can immediately start typing.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgColumns.HideFilter">
+	<summary>
+ 20100105 RPB added for via
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgColumns.blnStringHasWildCards(System.String)">
+	<summary>
+ 20091124 RPB created blnStringHasWildCards.
+ 20100122 RPB Modified blnStringHasWildCards: Do not check for *.
+ Return true if the string contains a 'Like' wildcard.
+ </summary>
+	<param name="strText"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgColumns.MakeFilter(System.Boolean)">
+	<summary>
+ 20091124 RPB Modified MakeFilter: Do not use Like if string contains a wildcard character.
+ 20091209 RPB Modified MakeFilter: Allow filter on DateTime by converting to string.
+ 20100122 RPB Modified MakeFilter: Only add * if there is no * in the string already.
+ </summary>
+	<param name="blnExact"></param>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgColumns.strMakeFilter(System.Boolean)">
+	<summary>
+ 20111004 Return the filter as a string.
+ 20140807 Made function overriable. Used in GIS to set a flag if filters change.
+ </summary>
+	<param name="blnExact"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgColumns.ColumnDoubleClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
+	<summary>
+ 20091005 Added true to ColumnDoubleClick(strColumnName, strValue, True) to allow 
+ filtering on comboboxes from other forms.
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Utilities.dgColumns.ColumnDoubleClick(System.String,System.String)">
+	<summary>
+ 20091005 Override so that Filtering from other form does allow ColumnDoubleClick
+ </summary>
+	<param name="strColumnName"></param>
+	<param name="strFilterText"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Utilities.statics.ModuleStatics.blnCheckGroupBoxLevel(System.String,System.String)">
+	<summary>
+ return the RO flag for the user, form, groupbox.
+ </summary>
+	<param name="strForm"></param>
+	<param name="strGroupbox"></param>
+	<returns>true means read only. Returns false if the groupbox is not in the table. This happens the first time the groupbox
+ is shown in a form. Do this because the default in the table is read only = false.</returns>
+	<remarks></remarks>
+</member><member name="M:Utilities.statics.ModuleStatics.blnCheckLevel(System.String,System.Boolean@)">
+	<summary>
+ Return true if the user may use the form.
+ </summary>
+	<param name="strForm"></param>
+	<param name="blnRO"></param>
+	<returns></returns>
+	<remarks>
+ do add forms to m_form if they come this way.
+ </remarks>
+</member><member name="T:Utilities.PrinterIP">
+	<summary>
+ Print to a network printer using the IP address. Check this when we have printer names and a DNS.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:Utilities.PrinterLocal">
+	<summary>
+ Print to a printer on a local port like USB004 using the printer name.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:Utilities.TheDataSet.m_formatDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.b_semaphoreDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_formDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_grpDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_tbleDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_tble_column__visibilityDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_grpDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_langDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_tbleDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_tble_columnDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_tble_column_headerDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_usrDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_usr_grpDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_versionDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_txtDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_txt_headerDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_usr_logDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_usr_logDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.b_app_parameterDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.b_app_colorDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_usr_blockedDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_txt_headerDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_app_logDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_grp_groupboxDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_usr_grp_groupboxDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_grp_logDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_usr_change_logDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_formatRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.b_semaphoreRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_formRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_grpRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_tbleRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_tble_column__visibilityRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_grpRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_langRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_tbleRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_tble_columnRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_tble_column_headerRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_usrRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_usr_grpRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_versionRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_txtRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_txt_headerRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_usr_logRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_usr_logRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.b_app_parameterRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.b_app_colorRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_usr_blockedRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_txt_headerRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_app_logRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_grp_groupboxRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_usr_grp_groupboxRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_grp_logRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_usr_change_logRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_formatRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.b_semaphoreRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_formRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_grpRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_tbleRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_tble_column__visibilityRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_grpRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_langRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_tbleRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_tble_columnRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_tble_column_headerRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_usrRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_usr_grpRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_versionRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_txtRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_txt_headerRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_usr_logRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_usr_logRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.b_app_parameterRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.b_app_colorRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_usr_blockedRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_txt_headerRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_app_logRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_grp_groupboxRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.v_usr_grp_groupboxRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_form_grp_logRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet.m_usr_change_logRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Utilities.TheDataSet">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_formatTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.b_semaphoreTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_formTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_form_grpTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_form_tbleTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_form_tble_column__visibilityTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_grpTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_langTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_tbleTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_tble_columnTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.v_tble_column_headerTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_usrTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.v_usr_grpTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_versionTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_txtTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_txt_headerTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_usr_logTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.v_usr_logTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.b_app_parameterTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.b_app_colorTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.v_usr_blockedTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.v_txt_headerTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_app_logTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_form_grp_groupboxTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.v_usr_grp_groupboxTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_form_grp_logTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Utilities.TheDataSetTableAdapters.m_usr_change_logTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+</members>
+</doc>

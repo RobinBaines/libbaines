@@ -1,0 +1,38 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ExcelInterface
+</name>
+</assembly>
+<members>
+<member name="P:ExcelInterface.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:ExcelInterface.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:ExcelInterface.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="T:ExcelInterface.XMLExcelCell">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:ExcelInterface.XMLExcelInterface.CloseExcelBook(System.Boolean)">
+	<summary>
+ 20090909 Added flag to prevent conversion to us culture.
+ </summary>
+	<param name="blnRetainCulture"></param>
+	<remarks></remarks>
+</member><member name="T:ExcelInterface.XMLExcelInterface">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

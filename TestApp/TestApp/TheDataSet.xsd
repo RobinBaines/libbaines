@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TheDataSet" targetNamespace="http://tempuri.org/UtilitiesDataSet.xsd" xmlns:mstns="http://tempuri.org/UtilitiesDataSet.xsd" xmlns="http://tempuri.org/UtilitiesDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="UtilitiesConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="UtilitiesConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.TestApp.My.MySettings.GlobalReference.Default.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="v_usr_logTableAdapter" GeneratorDataComponentClassName="v_usr_logTableAdapter" Name="v_usr_log" UserDataComponentName="v_usr_logTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="UtilitiesConnectionString (MySettings)" DbObjectName="Utilities.dbo.v_usr_log" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT usr, app, year_minutes, year_loggedin, year_loggedin_unauthorized, year_logout, year_average, month_minutes, month_loggedin, month_loggedin_unauthorized, month_logout, month_average, logged_in, days_since_log, blocked, blocking, name FROM dbo.v_usr_log</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="usr" DataSetColumn="usr" />
+              <Mapping SourceColumn="app" DataSetColumn="app" />
+              <Mapping SourceColumn="year_minutes" DataSetColumn="year_minutes" />
+              <Mapping SourceColumn="year_loggedin" DataSetColumn="year_loggedin" />
+              <Mapping SourceColumn="year_loggedin_unauthorized" DataSetColumn="year_loggedin_unauthorized" />
+              <Mapping SourceColumn="year_logout" DataSetColumn="year_logout" />
+              <Mapping SourceColumn="year_average" DataSetColumn="year_average" />
+              <Mapping SourceColumn="month_minutes" DataSetColumn="month_minutes" />
+              <Mapping SourceColumn="month_loggedin" DataSetColumn="month_loggedin" />
+              <Mapping SourceColumn="month_loggedin_unauthorized" DataSetColumn="month_loggedin_unauthorized" />
+              <Mapping SourceColumn="month_logout" DataSetColumn="month_logout" />
+              <Mapping SourceColumn="month_average" DataSetColumn="month_average" />
+              <Mapping SourceColumn="logged_in" DataSetColumn="logged_in" />
+              <Mapping SourceColumn="days_since_log" DataSetColumn="days_since_log" />
+              <Mapping SourceColumn="blocked" DataSetColumn="blocked" />
+              <Mapping SourceColumn="blocking" DataSetColumn="blocking" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="m_usrTableAdapter" GeneratorDataComponentClassName="m_usrTableAdapter" Name="m_usr" UserDataComponentName="m_usrTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="UtilitiesConnectionString (MySettings)" DbObjectName="Utilities.dbo.m_usr" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[m_usr] WHERE (([usr] = @Original_usr))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_usr" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="usr" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[m_usr] ([usr], [grp], [lang], [blocking], [name], [email], [telephone]) VALUES (@usr, @grp, @lang, @blocking, @name, @email, @telephone);
+SELECT usr, grp, lang, blocking, name, email, telephone FROM m_usr WHERE (usr = @usr)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@usr" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="usr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@grp" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="grp" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@lang" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="lang" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@blocking" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="blocking" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@email" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="email" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@telephone" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="telephone" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT usr, grp, lang, blocking, name, email, telephone FROM dbo.m_usr</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[m_usr] SET [usr] = @usr, [grp] = @grp, [lang] = @lang, [blocking] = @blocking, [name] = @name, [email] = @email, [telephone] = @telephone WHERE (([usr] = @Original_usr));
+SELECT usr, grp, lang, blocking, name, email, telephone FROM m_usr WHERE (usr = @usr)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@usr" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="usr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@grp" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="grp" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@lang" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="lang" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@blocking" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="blocking" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@email" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="email" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@telephone" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="telephone" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_usr" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="usr" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="usr" DataSetColumn="usr" />
+              <Mapping SourceColumn="grp" DataSetColumn="grp" />
+              <Mapping SourceColumn="lang" DataSetColumn="lang" />
+              <Mapping SourceColumn="blocking" DataSetColumn="blocking" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="email" DataSetColumn="email" />
+              <Mapping SourceColumn="telephone" DataSetColumn="telephone" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="m_usr_logTableAdapter" GeneratorDataComponentClassName="m_usr_logTableAdapter" Name="m_usr_log" UserDataComponentName="m_usr_logTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="UtilitiesConnectionString (MySettings)" DbObjectName="Utilities.dbo.m_usr_log" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[m_usr_log] WHERE (([Id] = @Original_Id))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[m_usr_log] ([app], [logout], [sql_usr], [windowsIdentity], [usr], [authorized], [createTime], [minutes]) VALUES (@app, @logout, @sql_usr, @windowsIdentity, @usr, @authorized, @createTime, @minutes);
+SELECT Id, app, logout, sql_usr, windowsIdentity, usr, authorized, createTime, minutes FROM m_usr_log WHERE (Id = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@app" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="app" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@logout" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="logout" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@sql_usr" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="sql_usr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@windowsIdentity" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="windowsIdentity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@usr" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="usr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@authorized" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="authorized" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@createTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="createTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@minutes" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="minutes" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Id, app, logout, sql_usr, windowsIdentity, usr, authorized, createTime, minutes FROM dbo.m_usr_log</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[m_usr_log] SET [app] = @app, [logout] = @logout, [sql_usr] = @sql_usr, [windowsIdentity] = @windowsIdentity, [usr] = @usr, [authorized] = @authorized, [createTime] = @createTime, [minutes] = @minutes WHERE (([Id] = @Original_Id));
+SELECT Id, app, logout, sql_usr, windowsIdentity, usr, authorized, createTime, minutes FROM m_usr_log WHERE (Id = @Id)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@app" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="app" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@logout" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="logout" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@sql_usr" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="sql_usr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@windowsIdentity" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="windowsIdentity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@usr" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="usr" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@authorized" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="authorized" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@createTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="createTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@minutes" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="minutes" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Id" ColumnName="Id" DataSourceName="Utilities.dbo.m_usr_log" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="app" DataSetColumn="app" />
+              <Mapping SourceColumn="logout" DataSetColumn="logout" />
+              <Mapping SourceColumn="sql_usr" DataSetColumn="sql_usr" />
+              <Mapping SourceColumn="windowsIdentity" DataSetColumn="windowsIdentity" />
+              <Mapping SourceColumn="usr" DataSetColumn="usr" />
+              <Mapping SourceColumn="authorized" DataSetColumn="authorized" />
+              <Mapping SourceColumn="createTime" DataSetColumn="createTime" />
+              <Mapping SourceColumn="minutes" DataSetColumn="minutes" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="m_grpTableAdapter" GeneratorDataComponentClassName="m_grpTableAdapter" Name="m_grp" UserDataComponentName="m_grpTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="UtilitiesConnectionString (MySettings)" DbObjectName="Utilities.dbo.m_grp" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[m_grp] WHERE (([grp] = @Original_grp))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_grp" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="grp" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[m_grp] ([grp]) VALUES (@grp);
+SELECT grp FROM m_grp WHERE (grp = @grp)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@grp" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="grp" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT grp FROM dbo.m_grp</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[m_grp] SET [grp] = @grp WHERE (([grp] = @Original_grp));
+SELECT grp FROM m_grp WHERE (grp = @grp)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@grp" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="grp" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_grp" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="grp" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="grp" DataSetColumn="grp" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="m_langTableAdapter" GeneratorDataComponentClassName="m_langTableAdapter" Name="m_lang" UserDataComponentName="m_langTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="UtilitiesConnectionString (MySettings)" DbObjectName="Utilities.dbo.m_lang" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[m_lang] WHERE (([lang] = @Original_lang))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_lang" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="lang" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[m_lang] ([lang]) VALUES (@lang);
+SELECT lang FROM m_lang WHERE (lang = @lang)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@lang" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="lang" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT lang FROM dbo.m_lang</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[m_lang] SET [lang] = @lang WHERE (([lang] = @Original_lang));
+SELECT lang FROM m_lang WHERE (lang = @lang)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@lang" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="lang" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_lang" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="lang" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="lang" DataSetColumn="lang" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="b_semaphoreTableAdapter" GeneratorDataComponentClassName="b_semaphoreTableAdapter" Name="b_semaphore" UserDataComponentName="b_semaphoreTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="UtilitiesConnectionString (MySettings)" DbObjectName="Utilities.dbo.b_semaphore" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[b_semaphore] WHERE (([app] = @Original_app) AND ([tble] = @Original_tble))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_app" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="app" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_tble" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="tble" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[b_semaphore] ([app], [tble], [semaphore]) VALUES (@app, @tble, @semaphore);
+SELECT app, tble, semaphore FROM b_semaphore WHERE (app = @app) AND (tble = @tble)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@app" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="app" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@tble" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="tble" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@semaphore" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="semaphore" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT app, tble, semaphore FROM dbo.b_semaphore</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[b_semaphore] SET [app] = @app, [tble] = @tble, [semaphore] = @semaphore WHERE (([app] = @Original_app) AND ([tble] = @Original_tble));
+SELECT app, tble, semaphore FROM b_semaphore WHERE (app = @app) AND (tble = @tble)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@app" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="app" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@tble" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="tble" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@semaphore" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="semaphore" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_app" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="app" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_tble" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="tble" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="app" DataSetColumn="app" />
+              <Mapping SourceColumn="tble" DataSetColumn="tble" />
+              <Mapping SourceColumn="semaphore" DataSetColumn="semaphore" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="UtilitiesConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQuery" Modifier="Public" Name="UpdateQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UpdateQuery">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE [dbo].[b_semaphore] SET semaphore = semaphore + 1 
+WHERE [app] = @app AND [tble] = @tble
+</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="app" ColumnName="app" DataSourceName="Utilities.dbo.b_semaphore" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@app" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="app" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="tble" ColumnName="tble" DataSourceName="Utilities.dbo.b_semaphore" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@tble" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="tble" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="m_form_grpTableAdapter" GeneratorDataComponentClassName="m_form_grpTableAdapter" Name="m_form_grp" UserDataComponentName="m_form_grpTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="UtilitiesConnectionString (MySettings)" DbObjectName="Utilities.dbo.m_form_grp" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[m_form_grp] WHERE (([grp] = @Original_grp) AND ([form] = @Original_form) AND ([RO] = @Original_RO) AND ((@IsNull_createtime = 1 AND [createtime] IS NULL) OR ([createtime] = @Original_createtime)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_grp" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="grp" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_form" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="form" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_RO" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="RO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_createtime" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="createtime" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_createtime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="createtime" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[m_form_grp] ([grp], [form], [RO], [createtime]) VALUES (@grp, @form, @RO, @createtime);
+SELECT grp, form, RO, createtime FROM m_form_grp WHERE (form = @form) AND (grp = @grp)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@grp" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="grp" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@form" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="form" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@RO" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="RO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@createtime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="createtime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT grp, form, RO, createtime FROM dbo.m_form_grp</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[m_form_grp] SET [grp] = @grp, [form] = @form, [RO] = @RO, [createtime] = @createtime WHERE (([grp] = @Original_grp) AND ([form] = @Original_form) AND ([RO] = @Original_RO) AND ((@IsNull_createtime = 1 AND [createtime] IS NULL) OR ([createtime] = @Original_createtime)));
+SELECT grp, form, RO, createtime FROM m_form_grp WHERE (form = @form) AND (grp = @grp)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@grp" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="grp" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@form" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="form" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@RO" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="RO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@createtime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="createtime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_grp" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="grp" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_form" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="form" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_RO" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="RO" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_createtime" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="createtime" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_createtime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="createtime" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="grp" DataSetColumn="grp" />
+              <Mapping SourceColumn="form" DataSetColumn="form" />
+              <Mapping SourceColumn="RO" DataSetColumn="RO" />
+              <Mapping SourceColumn="createtime" DataSetColumn="createtime" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TheDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="TheDataSet" msprop:Generator_UserDSName="TheDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="v_usr_log" msprop:Generator_TableClassName="v_usr_logDataTable" msprop:Generator_RowEvArgName="v_usr_logRowChangeEvent" msprop:Generator_TableVarName="tablev_usr_log" msprop:Generator_TablePropName="v_usr_log" msprop:Generator_RowDeletingName="v_usr_logRowDeleting" msprop:Generator_RowChangingName="v_usr_logRowChanging" msprop:Generator_RowDeletedName="v_usr_logRowDeleted" msprop:Generator_RowEvHandlerName="v_usr_logRowChangeEventHandler" msprop:Generator_UserTableName="v_usr_log" msprop:Generator_RowChangedName="v_usr_logRowChanged" msprop:Generator_RowClassName="v_usr_logRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="usr" msprop:Generator_ColumnVarNameInTable="columnusr" msprop:Generator_ColumnPropNameInRow="usr" msprop:Generator_ColumnPropNameInTable="usrColumn" msprop:Generator_UserColumnName="usr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="app" msprop:Generator_ColumnVarNameInTable="columnapp" msprop:Generator_ColumnPropNameInRow="app" msprop:Generator_ColumnPropNameInTable="appColumn" msprop:Generator_UserColumnName="app">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="year_minutes" msprop:Generator_ColumnVarNameInTable="columnyear_minutes" msprop:Generator_ColumnPropNameInRow="year_minutes" msprop:Generator_ColumnPropNameInTable="year_minutesColumn" msprop:Generator_UserColumnName="year_minutes" type="xs:int" minOccurs="0" />
+              <xs:element name="year_loggedin" msprop:Generator_ColumnVarNameInTable="columnyear_loggedin" msprop:Generator_ColumnPropNameInRow="year_loggedin" msprop:Generator_ColumnPropNameInTable="year_loggedinColumn" msprop:Generator_UserColumnName="year_loggedin" type="xs:int" minOccurs="0" />
+              <xs:element name="year_loggedin_unauthorized" msprop:Generator_ColumnVarNameInTable="columnyear_loggedin_unauthorized" msprop:Generator_ColumnPropNameInRow="year_loggedin_unauthorized" msprop:Generator_ColumnPropNameInTable="year_loggedin_unauthorizedColumn" msprop:Generator_UserColumnName="year_loggedin_unauthorized" type="xs:int" minOccurs="0" />
+              <xs:element name="year_logout" msprop:Generator_ColumnVarNameInTable="columnyear_logout" msprop:Generator_ColumnPropNameInRow="year_logout" msprop:Generator_ColumnPropNameInTable="year_logoutColumn" msprop:Generator_UserColumnName="year_logout" type="xs:int" minOccurs="0" />
+              <xs:element name="year_average" msprop:Generator_ColumnVarNameInTable="columnyear_average" msprop:Generator_ColumnPropNameInRow="year_average" msprop:Generator_ColumnPropNameInTable="year_averageColumn" msprop:Generator_UserColumnName="year_average" type="xs:int" minOccurs="0" />
+              <xs:element name="month_minutes" msprop:Generator_ColumnVarNameInTable="columnmonth_minutes" msprop:Generator_ColumnPropNameInRow="month_minutes" msprop:Generator_ColumnPropNameInTable="month_minutesColumn" msprop:Generator_UserColumnName="month_minutes" type="xs:int" />
+              <xs:element name="month_loggedin" msprop:Generator_ColumnVarNameInTable="columnmonth_loggedin" msprop:Generator_ColumnPropNameInRow="month_loggedin" msprop:Generator_ColumnPropNameInTable="month_loggedinColumn" msprop:Generator_UserColumnName="month_loggedin" type="xs:int" />
+              <xs:element name="month_loggedin_unauthorized" msprop:Generator_ColumnVarNameInTable="columnmonth_loggedin_unauthorized" msprop:Generator_ColumnPropNameInRow="month_loggedin_unauthorized" msprop:Generator_ColumnPropNameInTable="month_loggedin_unauthorizedColumn" msprop:Generator_UserColumnName="month_loggedin_unauthorized" type="xs:int" />
+              <xs:element name="month_logout" msprop:Generator_ColumnVarNameInTable="columnmonth_logout" msprop:Generator_ColumnPropNameInRow="month_logout" msprop:Generator_ColumnPropNameInTable="month_logoutColumn" msprop:Generator_UserColumnName="month_logout" type="xs:int" />
+              <xs:element name="month_average" msprop:Generator_ColumnVarNameInTable="columnmonth_average" msprop:Generator_ColumnPropNameInRow="month_average" msprop:Generator_ColumnPropNameInTable="month_averageColumn" msprop:Generator_UserColumnName="month_average" type="xs:int" />
+              <xs:element name="logged_in" msprop:Generator_ColumnVarNameInTable="columnlogged_in" msprop:Generator_ColumnPropNameInRow="logged_in" msprop:Generator_ColumnPropNameInTable="logged_inColumn" msprop:Generator_UserColumnName="logged_in" type="xs:boolean" minOccurs="0" />
+              <xs:element name="days_since_log" msprop:Generator_ColumnVarNameInTable="columndays_since_log" msprop:Generator_ColumnPropNameInRow="days_since_log" msprop:Generator_ColumnPropNameInTable="days_since_logColumn" msprop:Generator_UserColumnName="days_since_log" type="xs:int" minOccurs="0" />
+              <xs:element name="blocked" msprop:Generator_ColumnVarNameInTable="columnblocked" msprop:Generator_ColumnPropNameInRow="blocked" msprop:Generator_ColumnPropNameInTable="blockedColumn" msprop:Generator_UserColumnName="blocked" type="xs:boolean" minOccurs="0" />
+              <xs:element name="blocking" msprop:Generator_ColumnVarNameInTable="columnblocking" msprop:Generator_ColumnPropNameInRow="blocking" msprop:Generator_ColumnPropNameInTable="blockingColumn" msprop:Generator_UserColumnName="blocking" type="xs:boolean" minOccurs="0" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="m_usr" msprop:Generator_TableClassName="m_usrDataTable" msprop:Generator_RowEvArgName="m_usrRowChangeEvent" msprop:Generator_TableVarName="tablem_usr" msprop:Generator_TablePropName="m_usr" msprop:Generator_RowDeletingName="m_usrRowDeleting" msprop:Generator_RowChangingName="m_usrRowChanging" msprop:Generator_RowDeletedName="m_usrRowDeleted" msprop:Generator_RowEvHandlerName="m_usrRowChangeEventHandler" msprop:Generator_UserTableName="m_usr" msprop:Generator_RowChangedName="m_usrRowChanged" msprop:Generator_RowClassName="m_usrRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="usr" msprop:Generator_ColumnVarNameInTable="columnusr" msprop:Generator_ColumnPropNameInRow="usr" msprop:Generator_ColumnPropNameInTable="usrColumn" msprop:Generator_UserColumnName="usr">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="grp" msprop:Generator_ColumnVarNameInTable="columngrp" msprop:Generator_ColumnPropNameInRow="grp" msprop:Generator_ColumnPropNameInTable="grpColumn" msprop:Generator_UserColumnName="grp" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="lang" msprop:Generator_ColumnVarNameInTable="columnlang" msprop:Generator_ColumnPropNameInRow="lang" msprop:Generator_ColumnPropNameInTable="langColumn" msprop:Generator_UserColumnName="lang">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="blocking" msprop:Generator_ColumnVarNameInTable="columnblocking" msprop:Generator_ColumnPropNameInRow="blocking" msprop:Generator_ColumnPropNameInTable="blockingColumn" msprop:Generator_UserColumnName="blocking" type="xs:boolean" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="email" msprop:Generator_ColumnVarNameInTable="columnemail" msprop:Generator_ColumnPropNameInRow="email" msprop:Generator_ColumnPropNameInTable="emailColumn" msprop:Generator_UserColumnName="email" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="telephone" msprop:Generator_ColumnVarNameInTable="columntelephone" msprop:Generator_ColumnPropNameInRow="telephone" msprop:Generator_ColumnPropNameInTable="telephoneColumn" msprop:Generator_UserColumnName="telephone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="m_usr_log" msprop:Generator_TableClassName="m_usr_logDataTable" msprop:Generator_RowEvArgName="m_usr_logRowChangeEvent" msprop:Generator_TableVarName="tablem_usr_log" msprop:Generator_TablePropName="m_usr_log" msprop:Generator_RowDeletingName="m_usr_logRowDeleting" msprop:Generator_RowChangingName="m_usr_logRowChanging" msprop:Generator_RowDeletedName="m_usr_logRowDeleted" msprop:Generator_RowEvHandlerName="m_usr_logRowChangeEventHandler" msprop:Generator_UserTableName="m_usr_log" msprop:Generator_RowChangedName="m_usr_logRowChanged" msprop:Generator_RowClassName="m_usr_logRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="app" msprop:Generator_ColumnVarNameInTable="columnapp" msprop:Generator_ColumnPropNameInRow="app" msprop:Generator_ColumnPropNameInTable="appColumn" msprop:Generator_UserColumnName="app">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="logout" msprop:Generator_ColumnVarNameInTable="columnlogout" msprop:Generator_ColumnPropNameInRow="logout" msprop:Generator_ColumnPropNameInTable="logoutColumn" msprop:Generator_UserColumnName="logout" type="xs:boolean" minOccurs="0" />
+              <xs:element name="sql_usr" msprop:Generator_ColumnVarNameInTable="columnsql_usr" msprop:Generator_ColumnPropNameInRow="sql_usr" msprop:Generator_ColumnPropNameInTable="sql_usrColumn" msprop:Generator_UserColumnName="sql_usr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="windowsIdentity" msprop:Generator_ColumnVarNameInTable="columnwindowsIdentity" msprop:Generator_ColumnPropNameInRow="windowsIdentity" msprop:Generator_ColumnPropNameInTable="windowsIdentityColumn" msprop:Generator_UserColumnName="windowsIdentity" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="usr" msprop:Generator_ColumnVarNameInTable="columnusr" msprop:Generator_ColumnPropNameInRow="usr" msprop:Generator_ColumnPropNameInTable="usrColumn" msprop:Generator_UserColumnName="usr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="authorized" msprop:Generator_ColumnVarNameInTable="columnauthorized" msprop:Generator_ColumnPropNameInRow="authorized" msprop:Generator_ColumnPropNameInTable="authorizedColumn" msprop:Generator_UserColumnName="authorized" type="xs:boolean" minOccurs="0" />
+              <xs:element name="createTime" msprop:Generator_ColumnVarNameInTable="columncreateTime" msprop:Generator_ColumnPropNameInRow="createTime" msprop:Generator_ColumnPropNameInTable="createTimeColumn" msprop:Generator_UserColumnName="createTime" type="xs:dateTime" />
+              <xs:element name="minutes" msprop:Generator_ColumnVarNameInTable="columnminutes" msprop:Generator_ColumnPropNameInRow="minutes" msprop:Generator_ColumnPropNameInTable="minutesColumn" msprop:Generator_UserColumnName="minutes" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="m_grp" msprop:Generator_TableClassName="m_grpDataTable" msprop:Generator_RowEvArgName="m_grpRowChangeEvent" msprop:Generator_TableVarName="tablem_grp" msprop:Generator_TablePropName="m_grp" msprop:Generator_RowDeletingName="m_grpRowDeleting" msprop:Generator_RowChangingName="m_grpRowChanging" msprop:Generator_RowDeletedName="m_grpRowDeleted" msprop:Generator_RowEvHandlerName="m_grpRowChangeEventHandler" msprop:Generator_UserTableName="m_grp" msprop:Generator_RowChangedName="m_grpRowChanged" msprop:Generator_RowClassName="m_grpRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="grp" msprop:Generator_ColumnVarNameInTable="columngrp" msprop:Generator_ColumnPropNameInRow="grp" msprop:Generator_ColumnPropNameInTable="grpColumn" msprop:Generator_UserColumnName="grp">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="m_lang" msprop:Generator_TableClassName="m_langDataTable" msprop:Generator_RowEvArgName="m_langRowChangeEvent" msprop:Generator_TableVarName="tablem_lang" msprop:Generator_TablePropName="m_lang" msprop:Generator_RowDeletingName="m_langRowDeleting" msprop:Generator_RowChangingName="m_langRowChanging" msprop:Generator_RowDeletedName="m_langRowDeleted" msprop:Generator_RowEvHandlerName="m_langRowChangeEventHandler" msprop:Generator_UserTableName="m_lang" msprop:Generator_RowChangedName="m_langRowChanged" msprop:Generator_RowClassName="m_langRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="lang" msprop:Generator_ColumnVarNameInTable="columnlang" msprop:Generator_ColumnPropNameInRow="lang" msprop:Generator_ColumnPropNameInTable="langColumn" msprop:Generator_UserColumnName="lang">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="b_semaphore" msprop:Generator_TableClassName="b_semaphoreDataTable" msprop:Generator_TableVarName="tableb_semaphore" msprop:Generator_RowChangedName="b_semaphoreRowChanged" msprop:Generator_TablePropName="b_semaphore" msprop:Generator_RowDeletingName="b_semaphoreRowDeleting" msprop:Generator_RowChangingName="b_semaphoreRowChanging" msprop:Generator_RowEvHandlerName="b_semaphoreRowChangeEventHandler" msprop:Generator_RowDeletedName="b_semaphoreRowDeleted" msprop:Generator_RowClassName="b_semaphoreRow" msprop:Generator_UserTableName="b_semaphore" msprop:Generator_RowEvArgName="b_semaphoreRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="app" msprop:Generator_ColumnVarNameInTable="columnapp" msprop:Generator_ColumnPropNameInRow="app" msprop:Generator_ColumnPropNameInTable="appColumn" msprop:Generator_UserColumnName="app">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tble" msprop:Generator_ColumnVarNameInTable="columntble" msprop:Generator_ColumnPropNameInRow="tble" msprop:Generator_ColumnPropNameInTable="tbleColumn" msprop:Generator_UserColumnName="tble">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="semaphore" msprop:Generator_ColumnVarNameInTable="columnsemaphore" msprop:Generator_ColumnPropNameInRow="semaphore" msprop:Generator_ColumnPropNameInTable="semaphoreColumn" msprop:Generator_UserColumnName="semaphore" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="m_form_grp" msprop:Generator_TableClassName="m_form_grpDataTable" msprop:Generator_TableVarName="tablem_form_grp" msprop:Generator_RowChangedName="m_form_grpRowChanged" msprop:Generator_TablePropName="m_form_grp" msprop:Generator_RowDeletingName="m_form_grpRowDeleting" msprop:Generator_RowChangingName="m_form_grpRowChanging" msprop:Generator_RowEvHandlerName="m_form_grpRowChangeEventHandler" msprop:Generator_RowDeletedName="m_form_grpRowDeleted" msprop:Generator_RowClassName="m_form_grpRow" msprop:Generator_UserTableName="m_form_grp" msprop:Generator_RowEvArgName="m_form_grpRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="grp" msprop:Generator_ColumnVarNameInTable="columngrp" msprop:Generator_ColumnPropNameInRow="grp" msprop:Generator_ColumnPropNameInTable="grpColumn" msprop:Generator_UserColumnName="grp">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="form" msprop:Generator_ColumnVarNameInTable="columnform" msprop:Generator_ColumnPropNameInRow="form" msprop:Generator_ColumnPropNameInTable="formColumn" msprop:Generator_UserColumnName="form">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RO" msprop:Generator_ColumnVarNameInTable="columnRO" msprop:Generator_ColumnPropNameInRow="RO" msprop:Generator_ColumnPropNameInTable="ROColumn" msprop:Generator_UserColumnName="RO" type="xs:boolean" />
+              <xs:element name="createtime" msprop:Generator_ColumnVarNameInTable="columncreatetime" msprop:Generator_ColumnPropNameInRow="createtime" msprop:Generator_ColumnPropNameInTable="createtimeColumn" msprop:Generator_UserColumnName="createtime" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:m_usr" />
+      <xs:field xpath="mstns:usr" />
+    </xs:unique>
+    <xs:unique name="m_usr_log_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:m_usr_log" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="m_grp_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:m_grp" />
+      <xs:field xpath="mstns:grp" />
+    </xs:unique>
+    <xs:unique name="m_lang_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:m_lang" />
+      <xs:field xpath="mstns:lang" />
+    </xs:unique>
+    <xs:unique name="b_semaphore_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:b_semaphore" />
+      <xs:field xpath="mstns:app" />
+      <xs:field xpath="mstns:tble" />
+    </xs:unique>
+    <xs:unique name="m_form_grp_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:m_form_grp" />
+      <xs:field xpath="mstns:grp" />
+      <xs:field xpath="mstns:form" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="FK_m_usr_grp" msdata:parent="m_grp" msdata:child="m_usr" msdata:parentkey="grp" msdata:childkey="grp" msprop:Generator_UserChildTable="m_usr" msprop:Generator_ChildPropName="Getm_usrRows" msprop:Generator_UserRelationName="FK_m_usr_grp" msprop:Generator_ParentPropName="m_grpRow" msprop:Generator_RelationVarName="relationFK_m_usr_grp" msprop:Generator_UserParentTable="m_grp" />
+      <msdata:Relationship name="FK_m_usr_lang" msdata:parent="m_lang" msdata:child="m_usr" msdata:parentkey="lang" msdata:childkey="lang" msprop:Generator_UserChildTable="m_usr" msprop:Generator_ChildPropName="Getm_usrRows" msprop:Generator_UserRelationName="FK_m_usr_lang" msprop:Generator_ParentPropName="m_langRow" msprop:Generator_RelationVarName="relationFK_m_usr_lang" msprop:Generator_UserParentTable="m_lang" />
+      <msdata:Relationship name="FK_m_form_grp_grp" msdata:parent="m_grp" msdata:child="m_form_grp" msdata:parentkey="grp" msdata:childkey="grp" msprop:Generator_UserChildTable="m_form_grp" msprop:Generator_ChildPropName="Getm_form_grpRows" msprop:Generator_UserRelationName="FK_m_form_grp_grp" msprop:Generator_RelationVarName="relationFK_m_form_grp_grp" msprop:Generator_UserParentTable="m_grp" msprop:Generator_ParentPropName="m_grpRow" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>
