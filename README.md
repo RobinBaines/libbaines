@@ -1,9 +1,9 @@
 # libbaines
 The framework is described in detail in Utilities.pdf.
 Here is a summary:
-
-The Utilities and Excel interface libraries provide generic functionality for .Net applications:
-Support for Filtering, Sorting and Editing of data,
+The Utilities and Excel interface libraries provide functionality for .Net applications:
+It includes 
+  Filtering, Sorting and Editing of data,
   Segregation of Duty,
   Column Design,
   Multi-language support. The active language is User dependent,
@@ -16,4 +16,4 @@ Support for Filtering, Sorting and Editing of data,
   Help textbox in every form.
 
 To create a MSQL database see SQL\readme.txt.
-To see an example op TestApp/TestApp.sln.
+TestApp/TestApp.sln is an example application using the framework.
