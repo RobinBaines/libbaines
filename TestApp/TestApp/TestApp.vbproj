@@ -111,6 +111,12 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmPollingExample.designer.vb">
+      <DependentUpon>frmPollingExample.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPollingExample.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TestAppMain.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmPollingExample.resx">
+      <DependentUpon>frmPollingExample.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>

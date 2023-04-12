@@ -82,7 +82,7 @@ Public Class TestAppMain
                     Case MENU_TEST_TESTFORM
                         ' ShowAForm(Me, New frmTest(sender, sender.ToolTipText, MainDefs), sender.Text, sender.ToolTipText)
                     Case MENU_TEST_POLLING
-                        ' ShowAForm(Me, New frmPollingExample(sender, sender.ToolTipText, MainDefs), sender.Text, sender.ToolTipText)
+                        ShowAForm(Me, New frmPollingExample(sender, sender.ToolTipText, MainDefs), sender.Text, sender.ToolTipText)
                 End Select
             End If
         End If
