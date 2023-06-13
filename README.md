@@ -6,7 +6,7 @@ It includes
   Filtering, Sorting and Editing of data,
   Segregation of Duty,
   Column Design,
-  Multi-language support. The active language is User dependent,
+  Multi-language support,
   User Logging,
   User Blocking after periods of inactivity,
   Timer initiated termination of an Application,
