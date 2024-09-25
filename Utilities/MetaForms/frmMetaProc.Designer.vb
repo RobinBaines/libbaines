@@ -45,6 +45,10 @@ Partial Class frmMetaProc
         CType(Me.Dm_sql_referencing_entitiesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
+        'HelpTextBox
+        '
+        Me.HelpTextBox.Location = New System.Drawing.Point(20, 58)
+        '
         'MetaData
         '
         Me.MetaData.DataSetName = "MetaData"
@@ -61,7 +65,7 @@ Partial Class frmMetaProc
         Me.dgROUTINES.Name = "dgROUTINES"
         Me.dgROUTINES.RowEnterInterval = 0
         Me.dgROUTINES.RowIndex = -1
-        Me.dgROUTINES.Size = New System.Drawing.Size(300, 692)
+        Me.dgROUTINES.Size = New System.Drawing.Size(300, 562)
         Me.dgROUTINES.ta = Nothing
         Me.dgROUTINES.TabIndex = 109
         '
@@ -70,12 +74,11 @@ Partial Class frmMetaProc
         Me.tbROUTINES.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ROUTINESBindingSource, "ROUTINE_DEFINITION", True))
         Me.tbROUTINES.Font = New System.Drawing.Font("Courier New", 9.75!)
         Me.tbROUTINES.Location = New System.Drawing.Point(330, 57)
-        Me.tbROUTINES.Multiline = True
         Me.tbROUTINES.Name = "tbROUTINES"
         Me.tbROUTINES.ReadOnly = True
-        Me.tbROUTINES.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both
-        Me.tbROUTINES.Size = New System.Drawing.Size(800, 692)
+        Me.tbROUTINES.Size = New System.Drawing.Size(800, 562)
         Me.tbROUTINES.TabIndex = 110
+        Me.tbROUTINES.Text = ""
         Me.tbROUTINES.WordWrap = False
         '
         'ROUTINESBindingSource
@@ -90,7 +93,7 @@ Partial Class frmMetaProc
         Me.dgReferenced.blnMove = True
         Me.dgReferenced.blnRO = False
         Me.dgReferenced.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgReferenced.Location = New System.Drawing.Point(12, 797)
+        Me.dgReferenced.Location = New System.Drawing.Point(12, 655)
         Me.dgReferenced.Name = "dgReferenced"
         Me.dgReferenced.RowEnterInterval = 0
         Me.dgReferenced.RowIndex = -1
@@ -105,7 +108,7 @@ Partial Class frmMetaProc
         Me.dgReferencing.blnMove = True
         Me.dgReferencing.blnRO = False
         Me.dgReferencing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgReferencing.Location = New System.Drawing.Point(406, 797)
+        Me.dgReferencing.Location = New System.Drawing.Point(406, 655)
         Me.dgReferencing.Name = "dgReferencing"
         Me.dgReferencing.RowEnterInterval = 0
         Me.dgReferencing.RowIndex = -1
@@ -117,6 +120,8 @@ Partial Class frmMetaProc
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.Connection = Nothing
+        Me.TableAdapterManager.m_keywordsTableAdapter = Nothing
+        Me.TableAdapterManager.m_sql_charactersTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = MetaDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'ROUTINESTableAdapter
@@ -164,6 +169,7 @@ Partial Class frmMetaProc
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "frmMetaProc"
         Me.Text = "frmMetaView"
+        Me.Controls.SetChildIndex(Me.HelpTextBox, 0)
         Me.Controls.SetChildIndex(Me.dgROUTINES, 0)
         Me.Controls.SetChildIndex(Me.tbROUTINES, 0)
         Me.Controls.SetChildIndex(Me.dgReferenced, 0)

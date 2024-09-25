@@ -22,6 +22,7 @@
 'RawPrinterLocal.PrintRaw("GK420d", pText.ToString)
 
 'Modifications:
+'20240920 Revised PrinterIP after timing problems during connect when the printer is 'far away'.
 
 Imports System.IO
 Imports System.Runtime.InteropServices
@@ -112,6 +113,7 @@ End Class
 
 ''' <summary>
 ''' Print to a network printer using the IP address. Check this when we have printer names and a DNS.
+''' 20240920 Revised PrinterIP after timing problems during connect when the printer is 'far away'.
 ''' </summary>
 ''' <remarks></remarks>
 Public Class PrinterIP
@@ -121,46 +123,71 @@ Public Class PrinterIP
         Dim lSocket As System.Net.Sockets.Socket = Nothing
         Dim lNetStream As System.Net.Sockets.NetworkStream = Nothing
         Dim lBytes As Byte()
+
         Try
-            lAddress = New Net.IPEndPoint(Net.IPAddress.Parse(pIP), 9100)
-            lSocket = New Socket(AddressFamily.InterNetwork, SocketType.Stream, _
-                                 ProtocolType.Tcp)
+            lAddress = New System.Net.IPEndPoint(System.Net.IPAddress.Parse(pIP), 9100)
+            lSocket = New Socket(AddressFamily.InterNetwork, SocketType.Stream,
+                                     ProtocolType.Tcp)
 
             'the following does not block and then polls for 500 msec to see if connections succeeds.
-            'blnRet is true if it does.
             'this avoids a long wait on a blocking Connect.
             lSocket.Blocking = False
+
+            '20240920 Ran into connect problem when the printer is 'far away': WSAEWOULDBLOCK error 10035.
+            'https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2
+            'This error Is returned from operations on nonblocking sockets that cannot be completed immediately,
+            'for example recv when no data Is queued to be read from the socket.
+            'It Is a nonfatal error, And the operation should be retried later.
+            'It Is normal For WSAEWOULDBLOCK To be reported As the result from calling connect On a nonblocking SOCK_STREAM socket,
+            'since some time must elapse for the connection to be established.
+            Dim strException As String = ""
             Try
                 lSocket.Connect(lAddress)
-            Catch ex As Exception
-                ' MsgBox("Socket connection failed to : " + pIP + " with message: " + ex.Message)
-            End Try
-            '20181205 changed from 500 microsecs to 500,000 = 1/2 second.
-            If lSocket.Poll(500000, SelectMode.SelectWrite) Then
-                lSocket.Blocking = True
-                lNetStream = New NetworkStream(lSocket)
-                lBytes = System.Text.Encoding.ASCII.GetBytes(psZPL)
-                lNetStream.Write(lBytes, 0, lBytes.Length)
-                blnRet = True
-            Else
-                blnRet = False
-                Debug.Print("Poll failed")
 
-                '20181205 added this when debugging Apeldoorn citrix printer.
-                MsgBox("Utilitities.PrintZPL: Poll of " + pIP + " failed, trying to print " + psZPL + ".")
-            End If
+            Catch ex As SocketException
+                'Store the message and avoid clLogging.Log during the socket transaction because of timing.
+                strException = "1. PrintZPL(). Socket connection failed. Errorcode = " + ex.NativeErrorCode.ToString() + " with message: " + ex.Message
+            End Try
+
+            'Continue even if there has been an exception.
+            Try
+                If lSocket.Poll(500000, SelectMode.SelectWrite) Then
+                    lSocket.Blocking = True
+                    lNetStream = New NetworkStream(lSocket)
+                    lBytes = System.Text.Encoding.ASCII.GetBytes(psZPL)
+
+                    '20240916 Added CanWrite
+                    If lNetStream.CanWrite Then
+                        lNetStream.Write(lBytes, 0, lBytes.Length)
+                        If strException <> "" Then
+                            clLogging.Log(strException)
+                        End If
+                        clLogging.Log("PrintZPL(). Wrote string to the socket.")
+                        blnRet = True
+                    End If
+                Else
+                    If strException <> "" Then
+                        clLogging.Log(strException)
+                    End If
+                    '20181205 added this when debugging Apeldoorn citrix printer.
+                    clLogging.Log("PrintZPL(). Poll of " + pIP + " failed. " + psZPL + ".")
+                End If
+
+            Catch ex As SocketException
+                clLogging.Log("2. PrintZPL(). Socket Polling during connection failed. Errorcode = " + ex.NativeErrorCode.ToString() + " with message: " + ex.Message)
+            End Try
 
         Catch ex As Exception 'When Not App.Debugging
-            MsgBox(ex.Message & vbNewLine & ex.ToString)
-        Finally
-            If Not lNetStream Is Nothing Then
-                lNetStream.Close()
-            End If
-            If Not lSocket Is Nothing Then
-                lSocket.Close()
-            End If
+            clLogging.Log("PrintZPL(). Exception when printing on " + pIP + " with message: " + ex.Message)
         End Try
+        If Not lNetStream Is Nothing Then
+            lNetStream.Close()
+        End If
+        If Not lSocket Is Nothing Then
+            lSocket.Close()
+        End If
         Return blnRet
+
     End Function
 
     'Public Shared Function PrintZPL(ByVal pIP As String, ByVal psZPL As String) As Boolean

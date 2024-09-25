@@ -51,6 +51,7 @@ MainDefs, True, Controls, Me, True)
         Me.SwitchOffPrintDetail()
         Me.SwitchOffPrint()
         Me.SwitchOffUpdate()
+        Me.HelpTextBox.Visible = False
     End Sub
 
 #End Region

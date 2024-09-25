@@ -26,20 +26,9 @@ Public Class TestAppMain
     'This is a button which opens a form and is put in the top level of the ToolStrip1
     Protected WithEvents tsbfrmTest As System.Windows.Forms.ToolStripButton
     Const MENU_TESTFORM As String = "TestForm"
-    Protected WithEvents tsbfrmKNMP As System.Windows.Forms.ToolStripButton
-    Const MENU_KNMPFORM As String = "KNMPForm"
+
     Protected WithEvents tsbfrmFlow As System.Windows.Forms.ToolStripButton
     Const MENU_FLOWFORM As String = "FlowForm"
-
-    Protected WithEvents tsbADHOCViews As System.Windows.Forms.ToolStripButton
-    Const MENU_ADHOC_VIEWS As String = "Adhoc Views"
-
-    Protected WithEvents tsbMeta As System.Windows.Forms.ToolStripButton
-    Const MENU_META_VIEWS As String = "View Browser"
-
-    Protected WithEvents tsbMetaProc As System.Windows.Forms.ToolStripButton
-    Const MENU_META_Procs As String = "Routines Browser"
-
 
     'This is a drop down called 'Some Tests' with 2 items which open forms.
     Const MENU_TEST As String = "Some Tests"
@@ -108,33 +97,10 @@ Public Class TestAppMain
             '  ShowAForm(Me, New HTMLView(), sender.Text, sender.ToolTipText)
         End If
     End Sub
-    Private Sub tsbfrmKNMP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbfrmKNMP.Click
-        If blnBringToFrontIfExists(Me, sender.ToolTipText) = False Then
-            '  ShowAForm(Me, New form_v_backbone(sender, sender.ToolTipText, sender.ToolTipText, MainDefs, Nothing, True, True, True), sender.Text, sender.ToolTipText)
-        End If
-    End Sub
+
     Private Sub tsbfrmFlow_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbfrmFlow.Click
         If blnBringToFrontIfExists(Me, sender.ToolTipText) = False Then
-            ' ShowAForm(Me, New frmFlow(sender, sender.ToolTipText, MainDefs), sender.Text, sender.ToolTipText)
-        End If
-    End Sub
-
-    Private Sub tsbADHOCViews_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbADHOCViews.Click
-        If blnBringToFrontIfExists(Me, sender.ToolTipText) = False Then
-            ShowAForm(Me, New frmAdhocViews(sender, sender.ToolTipText, MainDefs), sender.Text, sender.ToolTipText)
-        End If
-    End Sub
-
-    Private Sub tsbMeta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbMeta.Click
-        If blnBringToFrontIfExists(Me, sender.ToolTipText) = False Then
-            ShowAForm(Me, New frmMetaView(sender, sender.ToolTipText, MainDefs), sender.Text, sender.ToolTipText)
-        End If
-    End Sub
-
-
-    Private Sub tsbMetaProc_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbMetaProc.Click
-        If blnBringToFrontIfExists(Me, sender.ToolTipText) = False Then
-            ShowAForm(Me, New frmMetaProc(sender, sender.ToolTipText, MainDefs), sender.Text, sender.ToolTipText)
+            ShowAForm(Me, New frmFlow(sender, sender.ToolTipText, MainDefs), sender.Text, sender.ToolTipText)
         End If
     End Sub
 
@@ -166,12 +132,8 @@ Public Class TestAppMain
             'ToolStrip items. ToolStrip1 is the main menu.
             'This creates a top level entry which opens a form.
             tsbfrmTest = Me.CreateTsb("tsbfrmTest", MENU_TESTFORM, True, False) 'add to group to activate.
-            tsbfrmKNMP = Me.CreateTsb("tsbfrmKNMP", MENU_KNMPFORM, True, False)
-            tsbfrmFlow = Me.CreateTsb("tsbfrmFlow", MENU_FLOWFORM, True, False)
-            tsbADHOCViews = Me.CreateTsb("tsbADHOCViews", MENU_ADHOC_VIEWS, True, False)
-            tsbMeta = Me.CreateTsb("tsbMeta", MENU_META_VIEWS, True, False)
-            tsbMetaProc = Me.CreateTsb("tsbMetaProc", MENU_META_Procs, True, False)
 
+            tsbfrmFlow = Me.CreateTsb("tsbfrmFlow", MENU_FLOWFORM, True, False)
 
             'This creates a drop down.
             tsbSomeTests = CreateMainMenuDropDownEntry(Nothing, MENU_TEST) 'Shows automatically if at least one child is activated.

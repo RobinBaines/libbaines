@@ -9,6 +9,7 @@
 'Modifications:
 '20200428 FilterFile. Added check that the file exists before trying to filter.
 '20200430 ReNameLogFile modified to set the Logfile!!
+'20240917 added try/catch with msgbox. Missing r/w permission may be the cause and it proves better to catch this than letting it go.
 ''------------------------------------------------
 Imports System
 Imports System.IO
@@ -77,8 +78,10 @@ Public Class clLogging
             Else
                 sw.Stop()
                 TotalTime = 1000L * sw.ElapsedTicks / Stopwatch.Frequency
-                Log(TotalTime.ToString() + " msec. " + line)
+
+                'moved in front of Log.
                 sw.Reset()
+                Log(TotalTime.ToString() + " msec. " + line)
                 blnStarted = False
             End If
         End If
@@ -86,16 +89,26 @@ Public Class clLogging
 
     'log messages to the log file and show in the console.
     Public Shared Sub Log(line As String)
-        If Not Directory.Exists(Path.GetDirectoryName(Logfile)) Then
-            Directory.CreateDirectory(Path.GetDirectoryName(Logfile))
-        End If
-        Dim message As String = String.Format("{0} - {1}", DateTime.Now, line)
-        Dim tw As TextWriter = New StreamWriter(Logfile, True)
-        tw.WriteLine(message)
-        tw.Close()
 
-        'This call has no effect in GUI applications.
-        Console.WriteLine(message)
+        '20240924 added this check.
+        If DebugLogging Then
+
+            '20240917 added try/catch with msgbox. Missing r/w permission may be the cause and it proves better to catch this than letting it go.
+            Try
+                If Not Directory.Exists(Path.GetDirectoryName(Logfile)) Then
+                    Directory.CreateDirectory(Path.GetDirectoryName(Logfile))
+                End If
+                Dim message As String = String.Format("{0} - {1}", DateTime.Now, line)
+                Dim tw As TextWriter = New StreamWriter(Logfile, True)
+                tw.WriteLine(message)
+                tw.Close()
+
+                'This call has no effect in GUI applications.
+                Console.WriteLine(message)
+            Catch ex As Exception
+                MsgBox(line + " could not be written to the log. Check r/w permission. " + ex.Message)
+            End Try
+        End If
     End Sub
 
     'search a logfile looking for long delays.
@@ -184,8 +197,29 @@ Public Class clLogging
     End Function
 
     Public Shared Function ReNameLogFile(sFilename As String) As String
+
+        '20240924 If running on Citrix use unique logfile names for each session.
+        '20240924 The session name will defined and not equal to console if running on citrix. 
+
+        'Dim TheSessionName As String
+        'Returns The value of the environment variable specified by variable, or null if the environment variable is not found.
+        'TheSessionName = Environment.GetEnvironmentVariable("SESSIONNAME")
+        'If TheSessionName Is Nothing Then
+        '    TheSessionName = ""
+        'End If
+
+        'If TheSessionName.ToLower = "console" Then
+        '    TheSessionName = ""
+        'End If
+
+        'If TheSessionName.ToLower <> "" Then
+        '    TheSessionName = TheSessionName + "_"
+        'End If
+
+        Dim sessionid As String = Process.GetCurrentProcess().SessionId.ToString()
+
         Return Path.Combine(Path.GetDirectoryName(New Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath), "Logfiles",
-                                                "Logfile_" +
+                                                "Logfile_" + sessionid + "_" +
                                                 sFilename + ".txt")
     End Function
 

@@ -163,6 +163,24 @@ Namespace My
                 Return CType(Me("UtilitiesConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=BAINESLENOVO;Initial Catalog=gis2;User ID=RPBSQL;Password=robin2014")>  _
+        Public ReadOnly Property SQLAuthenticationConnectionString() As String
+            Get
+                Return CType(Me("SQLAuthenticationConnectionString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public ReadOnly Property SQLAuthentication() As Boolean
+            Get
+                Return CType(Me("SQLAuthentication"),Boolean)
+            End Get
+        End Property
     End Class
 End Namespace
 
