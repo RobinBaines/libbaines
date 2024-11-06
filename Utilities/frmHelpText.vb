@@ -5,14 +5,8 @@
 'Notes: 
 'Modifications: 
 '------------------------------------------------
-Imports Utilities
-Imports System
 Imports System.Windows.Forms
-Imports System.Configuration
-Imports System.Data.SqlClient
-Imports System.Threading
-Imports System.Drawing
-Imports ExcelInterface.XMLExcelInterface
+
 Public Class frmHelpText
     Dim vParent1 As m_helptext
 #Region "New"

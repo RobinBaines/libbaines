@@ -29,7 +29,7 @@ Partial Class frmPollingExample
         '
         'HelpTextBox
         '
-        Me.HelpTextBox.Location = New System.Drawing.Point(20, 58)
+        ' Me.HelpTextBox.Location = New System.Drawing.Point(20, 58)
         '
         'ListBox1
         '
@@ -58,7 +58,7 @@ Partial Class frmPollingExample
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "frmPollingExample"
         Me.Text = "frmPollingExample"
-        Me.Controls.SetChildIndex(Me.HelpTextBox, 0)
+        'Me.Controls.SetChildIndex(Me.HelpTextBox, 0)
         Me.Controls.SetChildIndex(Me.ListBox1, 0)
         Me.Controls.SetChildIndex(Me.ListBox2, 0)
         Me.ResumeLayout(False)

@@ -6,10 +6,9 @@
 'Created April 2008.
 '20120623 Changed Public Sub New(ByVal tsb As ToolStripButton to ToolStripItem to make more generic.
 '------------------------------------------------
-Imports System
 Imports System.Windows.Forms
 Imports System.Drawing
-Imports ExcelInterface.XMLExcelInterface
+
 
 '--------------------------------------------------------------
 '--GenericForm Class

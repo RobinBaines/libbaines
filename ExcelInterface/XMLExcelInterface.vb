@@ -156,20 +156,7 @@ End Enum
 
 
 'Public Shared oExcel As Microsoft.Office.Interop.Excel.Application = Nothing
-''' <summary>
-''' 
-''' </summary>
-''' <remarks></remarks>
-Public Class XMLExcelCell
-    Public strValue As String
-    Public iStyle As ExcelStringFormats
-    Public blnBold As Boolean
-    Public Sub New(ByVal _strValue As String, ByVal _iStyle As ExcelStringFormats)
-        strValue = _strValue
-        iStyle = _iStyle
-        blnBold = False
-    End Sub
-End Class
+
 
 ''' <summary>
 ''' 

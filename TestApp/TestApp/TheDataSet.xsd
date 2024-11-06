@@ -2,9 +2,10 @@
 <xs:schema id="TheDataSet" targetNamespace="http://tempuri.org/UtilitiesDataSet.xsd" xmlns:mstns="http://tempuri.org/UtilitiesDataSet.xsd" xmlns="http://tempuri.org/UtilitiesDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="UtilitiesConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="UtilitiesConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.TestApp.My.MySettings.GlobalReference.Default.ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.TestApp.My.MySettings.GlobalReference.Default.ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="v_usr_logTableAdapter" GeneratorDataComponentClassName="v_usr_logTableAdapter" Name="v_usr_log" UserDataComponentName="v_usr_logTableAdapter">
@@ -382,41 +383,41 @@ SELECT grp, form, RO, createtime FROM m_form_grp WHERE (form = @form) AND (grp =
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="TheDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="TheDataSet" msprop:Generator_UserDSName="TheDataSet">
+  <xs:element name="TheDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="TheDataSet" msprop:Generator_DataSetName="TheDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="v_usr_log" msprop:Generator_TableClassName="v_usr_logDataTable" msprop:Generator_RowEvArgName="v_usr_logRowChangeEvent" msprop:Generator_TableVarName="tablev_usr_log" msprop:Generator_TablePropName="v_usr_log" msprop:Generator_RowDeletingName="v_usr_logRowDeleting" msprop:Generator_RowChangingName="v_usr_logRowChanging" msprop:Generator_RowDeletedName="v_usr_logRowDeleted" msprop:Generator_RowEvHandlerName="v_usr_logRowChangeEventHandler" msprop:Generator_UserTableName="v_usr_log" msprop:Generator_RowChangedName="v_usr_logRowChanged" msprop:Generator_RowClassName="v_usr_logRow">
+        <xs:element name="v_usr_log" msprop:Generator_RowEvHandlerName="v_usr_logRowChangeEventHandler" msprop:Generator_RowDeletedName="v_usr_logRowDeleted" msprop:Generator_RowDeletingName="v_usr_logRowDeleting" msprop:Generator_RowEvArgName="v_usr_logRowChangeEvent" msprop:Generator_TablePropName="v_usr_log" msprop:Generator_RowChangedName="v_usr_logRowChanged" msprop:Generator_UserTableName="v_usr_log" msprop:Generator_RowChangingName="v_usr_logRowChanging" msprop:Generator_RowClassName="v_usr_logRow" msprop:Generator_TableClassName="v_usr_logDataTable" msprop:Generator_TableVarName="tablev_usr_log">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="usr" msprop:Generator_ColumnVarNameInTable="columnusr" msprop:Generator_ColumnPropNameInRow="usr" msprop:Generator_ColumnPropNameInTable="usrColumn" msprop:Generator_UserColumnName="usr" minOccurs="0">
+              <xs:element name="usr" msprop:Generator_UserColumnName="usr" msprop:Generator_ColumnPropNameInTable="usrColumn" msprop:Generator_ColumnPropNameInRow="usr" msprop:Generator_ColumnVarNameInTable="columnusr" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="app" msprop:Generator_ColumnVarNameInTable="columnapp" msprop:Generator_ColumnPropNameInRow="app" msprop:Generator_ColumnPropNameInTable="appColumn" msprop:Generator_UserColumnName="app">
+              <xs:element name="app" msprop:Generator_UserColumnName="app" msprop:Generator_ColumnPropNameInTable="appColumn" msprop:Generator_ColumnPropNameInRow="app" msprop:Generator_ColumnVarNameInTable="columnapp">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="year_minutes" msprop:Generator_ColumnVarNameInTable="columnyear_minutes" msprop:Generator_ColumnPropNameInRow="year_minutes" msprop:Generator_ColumnPropNameInTable="year_minutesColumn" msprop:Generator_UserColumnName="year_minutes" type="xs:int" minOccurs="0" />
-              <xs:element name="year_loggedin" msprop:Generator_ColumnVarNameInTable="columnyear_loggedin" msprop:Generator_ColumnPropNameInRow="year_loggedin" msprop:Generator_ColumnPropNameInTable="year_loggedinColumn" msprop:Generator_UserColumnName="year_loggedin" type="xs:int" minOccurs="0" />
-              <xs:element name="year_loggedin_unauthorized" msprop:Generator_ColumnVarNameInTable="columnyear_loggedin_unauthorized" msprop:Generator_ColumnPropNameInRow="year_loggedin_unauthorized" msprop:Generator_ColumnPropNameInTable="year_loggedin_unauthorizedColumn" msprop:Generator_UserColumnName="year_loggedin_unauthorized" type="xs:int" minOccurs="0" />
-              <xs:element name="year_logout" msprop:Generator_ColumnVarNameInTable="columnyear_logout" msprop:Generator_ColumnPropNameInRow="year_logout" msprop:Generator_ColumnPropNameInTable="year_logoutColumn" msprop:Generator_UserColumnName="year_logout" type="xs:int" minOccurs="0" />
-              <xs:element name="year_average" msprop:Generator_ColumnVarNameInTable="columnyear_average" msprop:Generator_ColumnPropNameInRow="year_average" msprop:Generator_ColumnPropNameInTable="year_averageColumn" msprop:Generator_UserColumnName="year_average" type="xs:int" minOccurs="0" />
-              <xs:element name="month_minutes" msprop:Generator_ColumnVarNameInTable="columnmonth_minutes" msprop:Generator_ColumnPropNameInRow="month_minutes" msprop:Generator_ColumnPropNameInTable="month_minutesColumn" msprop:Generator_UserColumnName="month_minutes" type="xs:int" />
-              <xs:element name="month_loggedin" msprop:Generator_ColumnVarNameInTable="columnmonth_loggedin" msprop:Generator_ColumnPropNameInRow="month_loggedin" msprop:Generator_ColumnPropNameInTable="month_loggedinColumn" msprop:Generator_UserColumnName="month_loggedin" type="xs:int" />
-              <xs:element name="month_loggedin_unauthorized" msprop:Generator_ColumnVarNameInTable="columnmonth_loggedin_unauthorized" msprop:Generator_ColumnPropNameInRow="month_loggedin_unauthorized" msprop:Generator_ColumnPropNameInTable="month_loggedin_unauthorizedColumn" msprop:Generator_UserColumnName="month_loggedin_unauthorized" type="xs:int" />
-              <xs:element name="month_logout" msprop:Generator_ColumnVarNameInTable="columnmonth_logout" msprop:Generator_ColumnPropNameInRow="month_logout" msprop:Generator_ColumnPropNameInTable="month_logoutColumn" msprop:Generator_UserColumnName="month_logout" type="xs:int" />
-              <xs:element name="month_average" msprop:Generator_ColumnVarNameInTable="columnmonth_average" msprop:Generator_ColumnPropNameInRow="month_average" msprop:Generator_ColumnPropNameInTable="month_averageColumn" msprop:Generator_UserColumnName="month_average" type="xs:int" />
-              <xs:element name="logged_in" msprop:Generator_ColumnVarNameInTable="columnlogged_in" msprop:Generator_ColumnPropNameInRow="logged_in" msprop:Generator_ColumnPropNameInTable="logged_inColumn" msprop:Generator_UserColumnName="logged_in" type="xs:boolean" minOccurs="0" />
-              <xs:element name="days_since_log" msprop:Generator_ColumnVarNameInTable="columndays_since_log" msprop:Generator_ColumnPropNameInRow="days_since_log" msprop:Generator_ColumnPropNameInTable="days_since_logColumn" msprop:Generator_UserColumnName="days_since_log" type="xs:int" minOccurs="0" />
-              <xs:element name="blocked" msprop:Generator_ColumnVarNameInTable="columnblocked" msprop:Generator_ColumnPropNameInRow="blocked" msprop:Generator_ColumnPropNameInTable="blockedColumn" msprop:Generator_UserColumnName="blocked" type="xs:boolean" minOccurs="0" />
-              <xs:element name="blocking" msprop:Generator_ColumnVarNameInTable="columnblocking" msprop:Generator_ColumnPropNameInRow="blocking" msprop:Generator_ColumnPropNameInTable="blockingColumn" msprop:Generator_UserColumnName="blocking" type="xs:boolean" minOccurs="0" />
-              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">
+              <xs:element name="year_minutes" msprop:Generator_UserColumnName="year_minutes" msprop:Generator_ColumnPropNameInTable="year_minutesColumn" msprop:Generator_ColumnPropNameInRow="year_minutes" msprop:Generator_ColumnVarNameInTable="columnyear_minutes" type="xs:int" minOccurs="0" />
+              <xs:element name="year_loggedin" msprop:Generator_UserColumnName="year_loggedin" msprop:Generator_ColumnPropNameInTable="year_loggedinColumn" msprop:Generator_ColumnPropNameInRow="year_loggedin" msprop:Generator_ColumnVarNameInTable="columnyear_loggedin" type="xs:int" minOccurs="0" />
+              <xs:element name="year_loggedin_unauthorized" msprop:Generator_UserColumnName="year_loggedin_unauthorized" msprop:Generator_ColumnPropNameInTable="year_loggedin_unauthorizedColumn" msprop:Generator_ColumnPropNameInRow="year_loggedin_unauthorized" msprop:Generator_ColumnVarNameInTable="columnyear_loggedin_unauthorized" type="xs:int" minOccurs="0" />
+              <xs:element name="year_logout" msprop:Generator_UserColumnName="year_logout" msprop:Generator_ColumnPropNameInTable="year_logoutColumn" msprop:Generator_ColumnPropNameInRow="year_logout" msprop:Generator_ColumnVarNameInTable="columnyear_logout" type="xs:int" minOccurs="0" />
+              <xs:element name="year_average" msprop:Generator_UserColumnName="year_average" msprop:Generator_ColumnPropNameInTable="year_averageColumn" msprop:Generator_ColumnPropNameInRow="year_average" msprop:Generator_ColumnVarNameInTable="columnyear_average" type="xs:int" minOccurs="0" />
+              <xs:element name="month_minutes" msprop:Generator_UserColumnName="month_minutes" msprop:Generator_ColumnPropNameInTable="month_minutesColumn" msprop:Generator_ColumnPropNameInRow="month_minutes" msprop:Generator_ColumnVarNameInTable="columnmonth_minutes" type="xs:int" />
+              <xs:element name="month_loggedin" msprop:Generator_UserColumnName="month_loggedin" msprop:Generator_ColumnPropNameInTable="month_loggedinColumn" msprop:Generator_ColumnPropNameInRow="month_loggedin" msprop:Generator_ColumnVarNameInTable="columnmonth_loggedin" type="xs:int" />
+              <xs:element name="month_loggedin_unauthorized" msprop:Generator_UserColumnName="month_loggedin_unauthorized" msprop:Generator_ColumnPropNameInTable="month_loggedin_unauthorizedColumn" msprop:Generator_ColumnPropNameInRow="month_loggedin_unauthorized" msprop:Generator_ColumnVarNameInTable="columnmonth_loggedin_unauthorized" type="xs:int" />
+              <xs:element name="month_logout" msprop:Generator_UserColumnName="month_logout" msprop:Generator_ColumnPropNameInTable="month_logoutColumn" msprop:Generator_ColumnPropNameInRow="month_logout" msprop:Generator_ColumnVarNameInTable="columnmonth_logout" type="xs:int" />
+              <xs:element name="month_average" msprop:Generator_UserColumnName="month_average" msprop:Generator_ColumnPropNameInTable="month_averageColumn" msprop:Generator_ColumnPropNameInRow="month_average" msprop:Generator_ColumnVarNameInTable="columnmonth_average" type="xs:int" />
+              <xs:element name="logged_in" msprop:Generator_UserColumnName="logged_in" msprop:Generator_ColumnPropNameInTable="logged_inColumn" msprop:Generator_ColumnPropNameInRow="logged_in" msprop:Generator_ColumnVarNameInTable="columnlogged_in" type="xs:boolean" minOccurs="0" />
+              <xs:element name="days_since_log" msprop:Generator_UserColumnName="days_since_log" msprop:Generator_ColumnPropNameInTable="days_since_logColumn" msprop:Generator_ColumnPropNameInRow="days_since_log" msprop:Generator_ColumnVarNameInTable="columndays_since_log" type="xs:int" minOccurs="0" />
+              <xs:element name="blocked" msprop:Generator_UserColumnName="blocked" msprop:Generator_ColumnPropNameInTable="blockedColumn" msprop:Generator_ColumnPropNameInRow="blocked" msprop:Generator_ColumnVarNameInTable="columnblocked" type="xs:boolean" minOccurs="0" />
+              <xs:element name="blocking" msprop:Generator_UserColumnName="blocking" msprop:Generator_ColumnPropNameInTable="blockingColumn" msprop:Generator_ColumnPropNameInRow="blocking" msprop:Generator_ColumnVarNameInTable="columnblocking" type="xs:boolean" minOccurs="0" />
+              <xs:element name="name" msprop:Generator_UserColumnName="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnVarNameInTable="columnname">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
@@ -426,46 +427,46 @@ SELECT grp, form, RO, createtime FROM m_form_grp WHERE (form = @form) AND (grp =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="m_usr" msprop:Generator_TableClassName="m_usrDataTable" msprop:Generator_RowEvArgName="m_usrRowChangeEvent" msprop:Generator_TableVarName="tablem_usr" msprop:Generator_TablePropName="m_usr" msprop:Generator_RowDeletingName="m_usrRowDeleting" msprop:Generator_RowChangingName="m_usrRowChanging" msprop:Generator_RowDeletedName="m_usrRowDeleted" msprop:Generator_RowEvHandlerName="m_usrRowChangeEventHandler" msprop:Generator_UserTableName="m_usr" msprop:Generator_RowChangedName="m_usrRowChanged" msprop:Generator_RowClassName="m_usrRow">
+        <xs:element name="m_usr" msprop:Generator_RowEvHandlerName="m_usrRowChangeEventHandler" msprop:Generator_RowDeletedName="m_usrRowDeleted" msprop:Generator_RowDeletingName="m_usrRowDeleting" msprop:Generator_RowEvArgName="m_usrRowChangeEvent" msprop:Generator_TablePropName="m_usr" msprop:Generator_RowChangedName="m_usrRowChanged" msprop:Generator_UserTableName="m_usr" msprop:Generator_RowChangingName="m_usrRowChanging" msprop:Generator_RowClassName="m_usrRow" msprop:Generator_TableClassName="m_usrDataTable" msprop:Generator_TableVarName="tablem_usr">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="usr" msprop:Generator_ColumnVarNameInTable="columnusr" msprop:Generator_ColumnPropNameInRow="usr" msprop:Generator_ColumnPropNameInTable="usrColumn" msprop:Generator_UserColumnName="usr">
+              <xs:element name="usr" msprop:Generator_UserColumnName="usr" msprop:Generator_ColumnPropNameInTable="usrColumn" msprop:Generator_ColumnPropNameInRow="usr" msprop:Generator_ColumnVarNameInTable="columnusr">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="grp" msprop:Generator_ColumnVarNameInTable="columngrp" msprop:Generator_ColumnPropNameInRow="grp" msprop:Generator_ColumnPropNameInTable="grpColumn" msprop:Generator_UserColumnName="grp" minOccurs="0">
+              <xs:element name="grp" msprop:Generator_UserColumnName="grp" msprop:Generator_ColumnPropNameInTable="grpColumn" msprop:Generator_ColumnPropNameInRow="grp" msprop:Generator_ColumnVarNameInTable="columngrp" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="lang" msprop:Generator_ColumnVarNameInTable="columnlang" msprop:Generator_ColumnPropNameInRow="lang" msprop:Generator_ColumnPropNameInTable="langColumn" msprop:Generator_UserColumnName="lang">
+              <xs:element name="lang" msprop:Generator_UserColumnName="lang" msprop:Generator_ColumnPropNameInTable="langColumn" msprop:Generator_ColumnPropNameInRow="lang" msprop:Generator_ColumnVarNameInTable="columnlang">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="blocking" msprop:Generator_ColumnVarNameInTable="columnblocking" msprop:Generator_ColumnPropNameInRow="blocking" msprop:Generator_ColumnPropNameInTable="blockingColumn" msprop:Generator_UserColumnName="blocking" type="xs:boolean" />
-              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+              <xs:element name="blocking" msprop:Generator_UserColumnName="blocking" msprop:Generator_ColumnPropNameInTable="blockingColumn" msprop:Generator_ColumnPropNameInRow="blocking" msprop:Generator_ColumnVarNameInTable="columnblocking" type="xs:boolean" />
+              <xs:element name="name" msprop:Generator_UserColumnName="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnVarNameInTable="columnname" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="email" msprop:Generator_ColumnVarNameInTable="columnemail" msprop:Generator_ColumnPropNameInRow="email" msprop:Generator_ColumnPropNameInTable="emailColumn" msprop:Generator_UserColumnName="email" minOccurs="0">
+              <xs:element name="email" msprop:Generator_UserColumnName="email" msprop:Generator_ColumnPropNameInTable="emailColumn" msprop:Generator_ColumnPropNameInRow="email" msprop:Generator_ColumnVarNameInTable="columnemail" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="telephone" msprop:Generator_ColumnVarNameInTable="columntelephone" msprop:Generator_ColumnPropNameInRow="telephone" msprop:Generator_ColumnPropNameInTable="telephoneColumn" msprop:Generator_UserColumnName="telephone" minOccurs="0">
+              <xs:element name="telephone" msprop:Generator_UserColumnName="telephone" msprop:Generator_ColumnPropNameInTable="telephoneColumn" msprop:Generator_ColumnPropNameInRow="telephone" msprop:Generator_ColumnVarNameInTable="columntelephone" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
@@ -475,49 +476,49 @@ SELECT grp, form, RO, createtime FROM m_form_grp WHERE (form = @form) AND (grp =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="m_usr_log" msprop:Generator_TableClassName="m_usr_logDataTable" msprop:Generator_RowEvArgName="m_usr_logRowChangeEvent" msprop:Generator_TableVarName="tablem_usr_log" msprop:Generator_TablePropName="m_usr_log" msprop:Generator_RowDeletingName="m_usr_logRowDeleting" msprop:Generator_RowChangingName="m_usr_logRowChanging" msprop:Generator_RowDeletedName="m_usr_logRowDeleted" msprop:Generator_RowEvHandlerName="m_usr_logRowChangeEventHandler" msprop:Generator_UserTableName="m_usr_log" msprop:Generator_RowChangedName="m_usr_logRowChanged" msprop:Generator_RowClassName="m_usr_logRow">
+        <xs:element name="m_usr_log" msprop:Generator_RowEvHandlerName="m_usr_logRowChangeEventHandler" msprop:Generator_RowDeletedName="m_usr_logRowDeleted" msprop:Generator_RowDeletingName="m_usr_logRowDeleting" msprop:Generator_RowEvArgName="m_usr_logRowChangeEvent" msprop:Generator_TablePropName="m_usr_log" msprop:Generator_RowChangedName="m_usr_logRowChanged" msprop:Generator_UserTableName="m_usr_log" msprop:Generator_RowChangingName="m_usr_logRowChanging" msprop:Generator_RowClassName="m_usr_logRow" msprop:Generator_TableClassName="m_usr_logDataTable" msprop:Generator_TableVarName="tablem_usr_log">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
-              <xs:element name="app" msprop:Generator_ColumnVarNameInTable="columnapp" msprop:Generator_ColumnPropNameInRow="app" msprop:Generator_ColumnPropNameInTable="appColumn" msprop:Generator_UserColumnName="app">
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:int" />
+              <xs:element name="app" msprop:Generator_UserColumnName="app" msprop:Generator_ColumnPropNameInTable="appColumn" msprop:Generator_ColumnPropNameInRow="app" msprop:Generator_ColumnVarNameInTable="columnapp">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="logout" msprop:Generator_ColumnVarNameInTable="columnlogout" msprop:Generator_ColumnPropNameInRow="logout" msprop:Generator_ColumnPropNameInTable="logoutColumn" msprop:Generator_UserColumnName="logout" type="xs:boolean" minOccurs="0" />
-              <xs:element name="sql_usr" msprop:Generator_ColumnVarNameInTable="columnsql_usr" msprop:Generator_ColumnPropNameInRow="sql_usr" msprop:Generator_ColumnPropNameInTable="sql_usrColumn" msprop:Generator_UserColumnName="sql_usr" minOccurs="0">
+              <xs:element name="logout" msprop:Generator_UserColumnName="logout" msprop:Generator_ColumnPropNameInTable="logoutColumn" msprop:Generator_ColumnPropNameInRow="logout" msprop:Generator_ColumnVarNameInTable="columnlogout" type="xs:boolean" minOccurs="0" />
+              <xs:element name="sql_usr" msprop:Generator_UserColumnName="sql_usr" msprop:Generator_ColumnPropNameInTable="sql_usrColumn" msprop:Generator_ColumnPropNameInRow="sql_usr" msprop:Generator_ColumnVarNameInTable="columnsql_usr" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="windowsIdentity" msprop:Generator_ColumnVarNameInTable="columnwindowsIdentity" msprop:Generator_ColumnPropNameInRow="windowsIdentity" msprop:Generator_ColumnPropNameInTable="windowsIdentityColumn" msprop:Generator_UserColumnName="windowsIdentity" minOccurs="0">
+              <xs:element name="windowsIdentity" msprop:Generator_UserColumnName="windowsIdentity" msprop:Generator_ColumnPropNameInTable="windowsIdentityColumn" msprop:Generator_ColumnPropNameInRow="windowsIdentity" msprop:Generator_ColumnVarNameInTable="columnwindowsIdentity" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="usr" msprop:Generator_ColumnVarNameInTable="columnusr" msprop:Generator_ColumnPropNameInRow="usr" msprop:Generator_ColumnPropNameInTable="usrColumn" msprop:Generator_UserColumnName="usr" minOccurs="0">
+              <xs:element name="usr" msprop:Generator_UserColumnName="usr" msprop:Generator_ColumnPropNameInTable="usrColumn" msprop:Generator_ColumnPropNameInRow="usr" msprop:Generator_ColumnVarNameInTable="columnusr" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="authorized" msprop:Generator_ColumnVarNameInTable="columnauthorized" msprop:Generator_ColumnPropNameInRow="authorized" msprop:Generator_ColumnPropNameInTable="authorizedColumn" msprop:Generator_UserColumnName="authorized" type="xs:boolean" minOccurs="0" />
-              <xs:element name="createTime" msprop:Generator_ColumnVarNameInTable="columncreateTime" msprop:Generator_ColumnPropNameInRow="createTime" msprop:Generator_ColumnPropNameInTable="createTimeColumn" msprop:Generator_UserColumnName="createTime" type="xs:dateTime" />
-              <xs:element name="minutes" msprop:Generator_ColumnVarNameInTable="columnminutes" msprop:Generator_ColumnPropNameInRow="minutes" msprop:Generator_ColumnPropNameInTable="minutesColumn" msprop:Generator_UserColumnName="minutes" type="xs:int" minOccurs="0" />
+              <xs:element name="authorized" msprop:Generator_UserColumnName="authorized" msprop:Generator_ColumnPropNameInTable="authorizedColumn" msprop:Generator_ColumnPropNameInRow="authorized" msprop:Generator_ColumnVarNameInTable="columnauthorized" type="xs:boolean" minOccurs="0" />
+              <xs:element name="createTime" msprop:Generator_UserColumnName="createTime" msprop:Generator_ColumnPropNameInTable="createTimeColumn" msprop:Generator_ColumnPropNameInRow="createTime" msprop:Generator_ColumnVarNameInTable="columncreateTime" type="xs:dateTime" />
+              <xs:element name="minutes" msprop:Generator_UserColumnName="minutes" msprop:Generator_ColumnPropNameInTable="minutesColumn" msprop:Generator_ColumnPropNameInRow="minutes" msprop:Generator_ColumnVarNameInTable="columnminutes" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="m_grp" msprop:Generator_TableClassName="m_grpDataTable" msprop:Generator_RowEvArgName="m_grpRowChangeEvent" msprop:Generator_TableVarName="tablem_grp" msprop:Generator_TablePropName="m_grp" msprop:Generator_RowDeletingName="m_grpRowDeleting" msprop:Generator_RowChangingName="m_grpRowChanging" msprop:Generator_RowDeletedName="m_grpRowDeleted" msprop:Generator_RowEvHandlerName="m_grpRowChangeEventHandler" msprop:Generator_UserTableName="m_grp" msprop:Generator_RowChangedName="m_grpRowChanged" msprop:Generator_RowClassName="m_grpRow">
+        <xs:element name="m_grp" msprop:Generator_RowEvHandlerName="m_grpRowChangeEventHandler" msprop:Generator_RowDeletedName="m_grpRowDeleted" msprop:Generator_RowDeletingName="m_grpRowDeleting" msprop:Generator_RowEvArgName="m_grpRowChangeEvent" msprop:Generator_TablePropName="m_grp" msprop:Generator_RowChangedName="m_grpRowChanged" msprop:Generator_UserTableName="m_grp" msprop:Generator_RowChangingName="m_grpRowChanging" msprop:Generator_RowClassName="m_grpRow" msprop:Generator_TableClassName="m_grpDataTable" msprop:Generator_TableVarName="tablem_grp">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="grp" msprop:Generator_ColumnVarNameInTable="columngrp" msprop:Generator_ColumnPropNameInRow="grp" msprop:Generator_ColumnPropNameInTable="grpColumn" msprop:Generator_UserColumnName="grp">
+              <xs:element name="grp" msprop:Generator_UserColumnName="grp" msprop:Generator_ColumnPropNameInTable="grpColumn" msprop:Generator_ColumnPropNameInRow="grp" msprop:Generator_ColumnVarNameInTable="columngrp">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
@@ -527,10 +528,10 @@ SELECT grp, form, RO, createtime FROM m_form_grp WHERE (form = @form) AND (grp =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="m_lang" msprop:Generator_TableClassName="m_langDataTable" msprop:Generator_RowEvArgName="m_langRowChangeEvent" msprop:Generator_TableVarName="tablem_lang" msprop:Generator_TablePropName="m_lang" msprop:Generator_RowDeletingName="m_langRowDeleting" msprop:Generator_RowChangingName="m_langRowChanging" msprop:Generator_RowDeletedName="m_langRowDeleted" msprop:Generator_RowEvHandlerName="m_langRowChangeEventHandler" msprop:Generator_UserTableName="m_lang" msprop:Generator_RowChangedName="m_langRowChanged" msprop:Generator_RowClassName="m_langRow">
+        <xs:element name="m_lang" msprop:Generator_RowEvHandlerName="m_langRowChangeEventHandler" msprop:Generator_RowDeletedName="m_langRowDeleted" msprop:Generator_RowDeletingName="m_langRowDeleting" msprop:Generator_RowEvArgName="m_langRowChangeEvent" msprop:Generator_TablePropName="m_lang" msprop:Generator_RowChangedName="m_langRowChanged" msprop:Generator_UserTableName="m_lang" msprop:Generator_RowChangingName="m_langRowChanging" msprop:Generator_RowClassName="m_langRow" msprop:Generator_TableClassName="m_langDataTable" msprop:Generator_TableVarName="tablem_lang">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="lang" msprop:Generator_ColumnVarNameInTable="columnlang" msprop:Generator_ColumnPropNameInRow="lang" msprop:Generator_ColumnPropNameInTable="langColumn" msprop:Generator_UserColumnName="lang">
+              <xs:element name="lang" msprop:Generator_UserColumnName="lang" msprop:Generator_ColumnPropNameInTable="langColumn" msprop:Generator_ColumnPropNameInRow="lang" msprop:Generator_ColumnVarNameInTable="columnlang">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2" />
@@ -540,46 +541,46 @@ SELECT grp, form, RO, createtime FROM m_form_grp WHERE (form = @form) AND (grp =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="b_semaphore" msprop:Generator_TableClassName="b_semaphoreDataTable" msprop:Generator_TableVarName="tableb_semaphore" msprop:Generator_RowChangedName="b_semaphoreRowChanged" msprop:Generator_TablePropName="b_semaphore" msprop:Generator_RowDeletingName="b_semaphoreRowDeleting" msprop:Generator_RowChangingName="b_semaphoreRowChanging" msprop:Generator_RowEvHandlerName="b_semaphoreRowChangeEventHandler" msprop:Generator_RowDeletedName="b_semaphoreRowDeleted" msprop:Generator_RowClassName="b_semaphoreRow" msprop:Generator_UserTableName="b_semaphore" msprop:Generator_RowEvArgName="b_semaphoreRowChangeEvent">
+        <xs:element name="b_semaphore" msprop:Generator_RowClassName="b_semaphoreRow" msprop:Generator_RowEvHandlerName="b_semaphoreRowChangeEventHandler" msprop:Generator_RowDeletedName="b_semaphoreRowDeleted" msprop:Generator_RowDeletingName="b_semaphoreRowDeleting" msprop:Generator_RowEvArgName="b_semaphoreRowChangeEvent" msprop:Generator_TablePropName="b_semaphore" msprop:Generator_RowChangedName="b_semaphoreRowChanged" msprop:Generator_UserTableName="b_semaphore" msprop:Generator_RowChangingName="b_semaphoreRowChanging" msprop:Generator_TableClassName="b_semaphoreDataTable" msprop:Generator_TableVarName="tableb_semaphore">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="app" msprop:Generator_ColumnVarNameInTable="columnapp" msprop:Generator_ColumnPropNameInRow="app" msprop:Generator_ColumnPropNameInTable="appColumn" msprop:Generator_UserColumnName="app">
+              <xs:element name="app" msprop:Generator_UserColumnName="app" msprop:Generator_ColumnPropNameInTable="appColumn" msprop:Generator_ColumnPropNameInRow="app" msprop:Generator_ColumnVarNameInTable="columnapp">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="tble" msprop:Generator_ColumnVarNameInTable="columntble" msprop:Generator_ColumnPropNameInRow="tble" msprop:Generator_ColumnPropNameInTable="tbleColumn" msprop:Generator_UserColumnName="tble">
+              <xs:element name="tble" msprop:Generator_UserColumnName="tble" msprop:Generator_ColumnPropNameInTable="tbleColumn" msprop:Generator_ColumnPropNameInRow="tble" msprop:Generator_ColumnVarNameInTable="columntble">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="semaphore" msprop:Generator_ColumnVarNameInTable="columnsemaphore" msprop:Generator_ColumnPropNameInRow="semaphore" msprop:Generator_ColumnPropNameInTable="semaphoreColumn" msprop:Generator_UserColumnName="semaphore" type="xs:int" minOccurs="0" />
+              <xs:element name="semaphore" msprop:Generator_UserColumnName="semaphore" msprop:Generator_ColumnPropNameInTable="semaphoreColumn" msprop:Generator_ColumnPropNameInRow="semaphore" msprop:Generator_ColumnVarNameInTable="columnsemaphore" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="m_form_grp" msprop:Generator_TableClassName="m_form_grpDataTable" msprop:Generator_TableVarName="tablem_form_grp" msprop:Generator_RowChangedName="m_form_grpRowChanged" msprop:Generator_TablePropName="m_form_grp" msprop:Generator_RowDeletingName="m_form_grpRowDeleting" msprop:Generator_RowChangingName="m_form_grpRowChanging" msprop:Generator_RowEvHandlerName="m_form_grpRowChangeEventHandler" msprop:Generator_RowDeletedName="m_form_grpRowDeleted" msprop:Generator_RowClassName="m_form_grpRow" msprop:Generator_UserTableName="m_form_grp" msprop:Generator_RowEvArgName="m_form_grpRowChangeEvent">
+        <xs:element name="m_form_grp" msprop:Generator_RowClassName="m_form_grpRow" msprop:Generator_RowEvHandlerName="m_form_grpRowChangeEventHandler" msprop:Generator_RowDeletedName="m_form_grpRowDeleted" msprop:Generator_RowDeletingName="m_form_grpRowDeleting" msprop:Generator_RowEvArgName="m_form_grpRowChangeEvent" msprop:Generator_TablePropName="m_form_grp" msprop:Generator_RowChangedName="m_form_grpRowChanged" msprop:Generator_UserTableName="m_form_grp" msprop:Generator_RowChangingName="m_form_grpRowChanging" msprop:Generator_TableClassName="m_form_grpDataTable" msprop:Generator_TableVarName="tablem_form_grp">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="grp" msprop:Generator_ColumnVarNameInTable="columngrp" msprop:Generator_ColumnPropNameInRow="grp" msprop:Generator_ColumnPropNameInTable="grpColumn" msprop:Generator_UserColumnName="grp">
+              <xs:element name="grp" msprop:Generator_UserColumnName="grp" msprop:Generator_ColumnPropNameInTable="grpColumn" msprop:Generator_ColumnPropNameInRow="grp" msprop:Generator_ColumnVarNameInTable="columngrp">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="form" msprop:Generator_ColumnVarNameInTable="columnform" msprop:Generator_ColumnPropNameInRow="form" msprop:Generator_ColumnPropNameInTable="formColumn" msprop:Generator_UserColumnName="form">
+              <xs:element name="form" msprop:Generator_UserColumnName="form" msprop:Generator_ColumnPropNameInTable="formColumn" msprop:Generator_ColumnPropNameInRow="form" msprop:Generator_ColumnVarNameInTable="columnform">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="RO" msprop:Generator_ColumnVarNameInTable="columnRO" msprop:Generator_ColumnPropNameInRow="RO" msprop:Generator_ColumnPropNameInTable="ROColumn" msprop:Generator_UserColumnName="RO" type="xs:boolean" />
-              <xs:element name="createtime" msprop:Generator_ColumnVarNameInTable="columncreatetime" msprop:Generator_ColumnPropNameInRow="createtime" msprop:Generator_ColumnPropNameInTable="createtimeColumn" msprop:Generator_UserColumnName="createtime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RO" msprop:Generator_UserColumnName="RO" msprop:Generator_ColumnPropNameInTable="ROColumn" msprop:Generator_ColumnPropNameInRow="RO" msprop:Generator_ColumnVarNameInTable="columnRO" type="xs:boolean" />
+              <xs:element name="createtime" msprop:Generator_UserColumnName="createtime" msprop:Generator_ColumnPropNameInTable="createtimeColumn" msprop:Generator_ColumnPropNameInRow="createtime" msprop:Generator_ColumnVarNameInTable="columncreatetime" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -614,9 +615,9 @@ SELECT grp, form, RO, createtime FROM m_form_grp WHERE (form = @form) AND (grp =
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_m_usr_grp" msdata:parent="m_grp" msdata:child="m_usr" msdata:parentkey="grp" msdata:childkey="grp" msprop:Generator_UserChildTable="m_usr" msprop:Generator_ChildPropName="Getm_usrRows" msprop:Generator_UserRelationName="FK_m_usr_grp" msprop:Generator_ParentPropName="m_grpRow" msprop:Generator_RelationVarName="relationFK_m_usr_grp" msprop:Generator_UserParentTable="m_grp" />
-      <msdata:Relationship name="FK_m_usr_lang" msdata:parent="m_lang" msdata:child="m_usr" msdata:parentkey="lang" msdata:childkey="lang" msprop:Generator_UserChildTable="m_usr" msprop:Generator_ChildPropName="Getm_usrRows" msprop:Generator_UserRelationName="FK_m_usr_lang" msprop:Generator_ParentPropName="m_langRow" msprop:Generator_RelationVarName="relationFK_m_usr_lang" msprop:Generator_UserParentTable="m_lang" />
-      <msdata:Relationship name="FK_m_form_grp_grp" msdata:parent="m_grp" msdata:child="m_form_grp" msdata:parentkey="grp" msdata:childkey="grp" msprop:Generator_UserChildTable="m_form_grp" msprop:Generator_ChildPropName="Getm_form_grpRows" msprop:Generator_UserRelationName="FK_m_form_grp_grp" msprop:Generator_RelationVarName="relationFK_m_form_grp_grp" msprop:Generator_UserParentTable="m_grp" msprop:Generator_ParentPropName="m_grpRow" />
+      <msdata:Relationship name="FK_m_usr_grp" msdata:parent="m_grp" msdata:child="m_usr" msdata:parentkey="grp" msdata:childkey="grp" msprop:Generator_UserParentTable="m_grp" msprop:Generator_UserChildTable="m_usr" msprop:Generator_RelationVarName="relationFK_m_usr_grp" msprop:Generator_ChildPropName="Getm_usrRows" msprop:Generator_ParentPropName="m_grpRow" msprop:Generator_UserRelationName="FK_m_usr_grp" />
+      <msdata:Relationship name="FK_m_usr_lang" msdata:parent="m_lang" msdata:child="m_usr" msdata:parentkey="lang" msdata:childkey="lang" msprop:Generator_UserParentTable="m_lang" msprop:Generator_UserChildTable="m_usr" msprop:Generator_RelationVarName="relationFK_m_usr_lang" msprop:Generator_ChildPropName="Getm_usrRows" msprop:Generator_ParentPropName="m_langRow" msprop:Generator_UserRelationName="FK_m_usr_lang" />
+      <msdata:Relationship name="FK_m_form_grp_grp" msdata:parent="m_grp" msdata:child="m_form_grp" msdata:parentkey="grp" msdata:childkey="grp" msprop:Generator_UserParentTable="m_grp" msprop:Generator_UserChildTable="m_form_grp" msprop:Generator_RelationVarName="relationFK_m_form_grp_grp" msprop:Generator_ChildPropName="Getm_form_grpRows" msprop:Generator_UserRelationName="FK_m_form_grp_grp" msprop:Generator_ParentPropName="m_grpRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

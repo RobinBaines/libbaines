@@ -2,22 +2,14 @@
 'Copyright Robin Baines 2008. All rights reserved.
 'Created Jan 2008.
 'This Main form is derived from Utilities.MainForm.
-
 'Notes: The Namespace of this app is TestApp.
 'If there is a class also called TestApp then the designer will add TestApp to TestApp.TheDataSet and compiler thinks this a references to 
 'the TestApp class while it is the NameSpace.
 'So do not name a class TestApp!!
 'Modifications:
+'20241031 Added some comments and revised the code.
 '------------------------------------------------
-Imports System
-Imports System.Security.Cryptography
 Imports System.Configuration
-
-Imports System.Windows.Forms
-Imports System.Runtime.InteropServices
-Imports System.Data
-Imports System.Data.SqlClient
-Imports System.Data.Sql
 Imports Utilities
 Public Class TestAppMain
 
@@ -32,8 +24,8 @@ Public Class TestAppMain
 
     'This is a drop down called 'Some Tests' with 2 items which open forms.
     Const MENU_TEST As String = "Some Tests"
-    Const MENU_TEST_TESTFORM As String = "2nd TestForm"
-    Const MENU_TEST_POLLING As String = "Polling"
+    Const MENU_TEST_TESTFORM As String = "Polling"
+    Const MENU_TEST_POLLING As String = "Same as Polling"
     Protected WithEvents tsbSomeTests As System.Windows.Forms.ToolStripMenuItem
 
     'Public SQLParser As clParseSQL
@@ -50,9 +42,7 @@ Public Class TestAppMain
 #Region "Load"
     Public Overrides Sub Init()
 
-        ' Me.IsMdiContainer = False
         'Create the menus before calling init() so that their visibility can be adjusted.
-        'CreateDropDownMenus()
         MyBase.Init()
 
         'switch off some buttons in the main form.
@@ -60,9 +50,8 @@ Public Class TestAppMain
         SwitchOffEdit()
         SwitchOffTools()
         SwitchOffView()
-        ''SwitchOffWindows()
         SwitchOffHelp()
-        SQLParser = New clParseSQL()
+
     End Sub
 
     'Possible to change the app details which are shown bottom left. The default is shown here and so commented out.
@@ -79,7 +68,7 @@ Public Class TestAppMain
             If blnBringToFrontIfExists(Me, sender.ToolTipText) = False Then
                 Select Case ctl.ToolTipText
                     Case MENU_TEST_TESTFORM
-                        ' ShowAForm(Me, New frmTest(sender, sender.ToolTipText, MainDefs), sender.Text, sender.ToolTipText)
+                        ShowAForm(Me, New frmPollingExample(sender, sender.ToolTipText, MainDefs), sender.Text, sender.ToolTipText)
                     Case MENU_TEST_POLLING
                         ShowAForm(Me, New frmPollingExample(sender, sender.ToolTipText, MainDefs), sender.Text, sender.ToolTipText)
                 End Select
@@ -91,15 +80,9 @@ Public Class TestAppMain
     'frmTest is being open from here and from the drop down. 
     Private Sub tsbfrmTest_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbfrmTest.Click
         If blnBringToFrontIfExists(Me, sender.ToolTipText) = False Then
-            'ShowAForm(Me, New frmTest(sender, sender.ToolTipText, MainDefs), sender.Text, sender.ToolTipText)
+            ShowAForm(Me, New frmUsrLog2(sender, sender.ToolTipText, MainDefs), sender.Text, sender.ToolTipText)
         End If
     End Sub
-
-    'Private Sub tsbfrmFlow_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbfrmFlow.Click
-    '    If blnBringToFrontIfExists(Me, sender.ToolTipText) = False Then
-    '        ShowAForm(Me, New frmFlow(sender, sender.ToolTipText, MainDefs), sender.Text, sender.ToolTipText)
-    '    End If
-    'End Sub
 
     'These are some MenuStrip items which do not open anything but are useful for testing.
     Friend WithEvents tsmMasterData As System.Windows.Forms.ToolStripMenuItem
@@ -286,53 +269,51 @@ Public Class TestAppMain
 
 #Region "FromThread"
     'The MainForm parent has a 5 second timer. 
-    'This may be used to call the frmStandard.TimerInMainThread() whihc can be overriden.
+    'This is used to call the frmStandard.TimerInMainThread() which can be overriden.
     'frmPollingExample() illustrates this.
 
     'This example also illustrates the use of the b_semaphore table for passing messages.
-    'Is very simple and with SQL 2008/12 there may be betters ways of doing. 
     'MainForm polls b_semaphore and passes changes to all forms. 
-    'So in this case TestApp updates b_semaphore and another application will see this and could use as a heartbeat check that TestApp is running. 
     Friend WithEvents b_semaphoreTableAdapter As TheDataSetTableAdapters.b_semaphoreTableAdapter = Nothing
 
-    ' The name TimerInMainThread means that this call is made in the main thread and not in the timer thread.
+    ' The  TimerInMainThread call is made in the main thread and not in the timer thread.
     'There is also a timer thread call but this may not be used for the UI.
 
-    'TimerInMainThread fires every Const iSLEEPSECONDS = 5 (see Utilities.MainForm) 
-    'Use this to slow it down a bit.
     Dim iCount As Integer = 0
     Const COUNT_TO = 3
 
+    ''' <summary>
+    ''' Override TimerInMainThread to increment the semaphore: "TESTAPP", "HEARTBEAT". The semaphore would normally 
+    ''' be incremented in a SQL proc. 
+    ''' This semaphore is read in frmPollingExample is used to update the user interface. 
+    ''' </summary>
+    ''' <param name="strTypeOfTick"> An enum would be better here: strTypeOfTick can have strings iShortTimerTick, iTimerTick   </param>
+    ''' <param name="blnEndOfProcess"></param>
     Protected Overrides Sub TimerInMainThread(ByVal strTypeOfTick As String, ByVal blnEndOfProcess As Boolean)
         MyBase.TimerInMainThread(strTypeOfTick, blnEndOfProcess)
 
-        If b_semaphoreTableAdapter Is Nothing Then
-            b_semaphoreTableAdapter = New TheDataSetTableAdapters.b_semaphoreTableAdapter
-            b_semaphoreTableAdapter.Connection.ConnectionString = GetConnectionString()
-        End If
-
-        'Do not call MyBase. This disables audio, b_semaphore check and auto_logout 
-        'and because the auto logout parameter applies to TPINet and not to TPITrack.
-        'MyBase.TimerInMainThread(strTypeOfTick, blnEndOfProcess)
         If strTypeOfTick = iTimerTick Then
+
+            'iTimerTick is the 5 second timer. COUNT_TO is 3 and this means the semaphore is incremented 
+            'every 3 * 5 = 15 seconds.
             If iCount >= COUNT_TO Then
-                For Each f As Form In Me.MdiChildren()
-                    Try
-                        Dim frmStd As frmStandard = TryCast(f, frmStandard)
-                        If Not frmStd Is Nothing Then
-                            frmStd.TimerInMainThread()
-                        End If
-                    Catch ex As Exception
-                    End Try
-                Next
+
+                'When calling SQL using a TheDataSetTableAdapters ensure the connection string 
+                'is set to the live connection. Otherwise the design time connection in the dataset will be used.
+                If b_semaphoreTableAdapter Is Nothing Then
+                    b_semaphoreTableAdapter = New TheDataSetTableAdapters.b_semaphoreTableAdapter
+                    b_semaphoreTableAdapter.Connection.ConnectionString = GetConnectionString()
+                End If
+
                 'Following assumes "TestApp", "heartbeat" is in b_semaphore: INSERT INTO [Utilities].[dbo].[b_semaphore]([app],[tble],semaphore)VALUES('TestApp','heartbeat',0)
                 'UpdateQuery increments semaphore counter.
+                b_semaphoreTableAdapter.UpdateQuery("TESTAPP", "HEARTBEAT")
 
-                'b_semaphoreTableAdapter.UpdateQuery("TESTAPP", "HEARTBEAT")
+                iCount = 0
             End If
-            iCount = 0
+            iCount = iCount + 1
         End If
-        iCount = iCount + 1
+
     End Sub
 #End Region
 End Class

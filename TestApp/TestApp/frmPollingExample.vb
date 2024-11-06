@@ -15,14 +15,8 @@
 'Modifications: 
 '------------------------------------------------
 Imports Utilities
-Imports ExcelInterface
-
-Imports System
-Imports System.Configuration
-Imports System.Data.SqlClient
-Imports System.Threading
-Imports ExcelInterface.XMLExcelInterface
-Imports System.ComponentModel
+Imports ClosedXML.Excel
+Imports System.Linq
 Public Class frmPollingExample
     Dim blnRun As Boolean = False
     Friend WithEvents tsbImportReceiptOrder As ToolStripButton
@@ -38,6 +32,9 @@ Public Class frmPollingExample
         InitializeComponent()
         blnRun = True
         Me.tsbImportReceiptOrder = Me.CreateTsb("tsbImportReceiptOrder", "Import Receipt Order", True, True, 80)
+        Me.SwitchOffPrintDetail()
+        Me.SwitchOffPrint()
+        Me.SwitchOffUpdate()
     End Sub
 #End Region
 #Region "Timer"
@@ -63,58 +60,54 @@ Public Class frmPollingExample
 
     Protected Sub tsbImportReceiptOrder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbImportReceiptOrder.Click
 
-      
-            Dim fileDlg As New OpenFileDialog
+        Dim fileDlg As New OpenFileDialog
         fileDlg.Title = fileDlg.Title
         fileDlg.Filter = "Receipt Order File (*.xls*)|*.xls*"
         fileDlg.DefaultExt = "xlsx"
         fileDlg.InitialDirectory = statics.GetParameter("IMPORT")
-            If fileDlg.InitialDirectory.Length = 0 Then
-                fileDlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-                fileDlg.InitialDirectory = "c:\Projects\spits\GIS\RECEIPT_ORDERs\"
-            End If
-            If fileDlg.ShowDialog() = DialogResult.OK Then
-                Try
-                    Dim ReadExcel As New ReadExcel
-                    Dim A As Collection
-                    A = ReadExcel.Open(fileDlg.FileName, 999, 8, "H")   '"\\RPB5\Projects\spits\GIS\receipt.xlsx"
-                    If A.Count > 1 Then
+        If fileDlg.InitialDirectory.Length = 0 Then
+            fileDlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            fileDlg.InitialDirectory = "c:\Projects\spits\GIS\RECEIPT_ORDERs\"
+        End If
+        If fileDlg.ShowDialog() = DialogResult.OK Then
+            Try
+                Dim ReadExcel As New ExcelInterface.ReadExcel
+                Dim A As Collection
+                A = ReadExcel.Open(fileDlg.FileName)   '"\\RPB5\Projects\spits\GIS\receipt.xlsx"
+                If A.Count > 1 Then
                     '                        V_drugid__receiptTableAdapter.p_create_a_dotinfo_ro(strSupplier, iRo_id)
-                        Dim strArray(8)
-                        Dim iRowCount As Integer = 0
-                        For Each strArray In A
-                            If iRowCount > 0 Then
-                                Dim strZinr As String = strArray(0)
-                                If strZinr Is Nothing Then
-                                    Exit For
-                                End If
-                                If strZinr.Length > 7 Then
-                                    strZinr = strZinr.Substring(0, 8)
-                                    Dim strPackCount As String = strArray(7)
-                                    Dim iPackCount As Integer
-                                    Try
-                                        iPackCount = System.Convert.ToInt32(strPackCount)
-                                        'If strZinr.Contains("/") Then
-                                        '    strZinr = strZinr.Substring(0, strZinr.IndexOf("/"))
-                                        'End If
-
-                                        Dim iRowAddedCount As Integer = 0
-                                        '     V_drugid__receiptTableAdapter.p_create_a_ro_line(iRo_id, strZinr, iPackCount, iRowAddedCount)
-                                    Catch ex As Exception
-
-                                    MsgBox(iRowCount.ToString & statics.get_txt_header(" row is a problem. Check format.", _
-          "User information raised when creating receipt order lines in ...", "User information"))
-                                    End Try
-                                End If
+                    Dim strArray(8)
+                    Dim iRowCount As Integer = 1
+                    For Each strArray In A
+                        If strArray.Count() > 8 Then
+                            Dim strZinr As String = strArray(0)
+                            If strZinr Is Nothing Then
+                                Exit For
                             End If
-                            iRowCount += 1
-                        Next
+                            If strZinr.Length > 7 Then
+                                strZinr = strZinr.Substring(0, 8)
+                                Dim strPackCount As String = strArray(7)
+                                Dim iPackCount As Integer
+                                Try
+                                    iPackCount = System.Convert.ToInt32(strPackCount)
+                                    'If strZinr.Contains("/") Then
+                                    '    strZinr = strZinr.Substring(0, strZinr.IndexOf("/"))
+                                    'End If
 
-                     
-                    End If
+                                    Dim iRowAddedCount As Integer = 0
+                                    '     V_drugid__receiptTableAdapter.p_create_a_ro_line(iRo_id, strZinr, iPackCount, iRowAddedCount)
+                                Catch ex As Exception
 
+                                    MsgBox(iRowCount.ToString & statics.get_txt_header(" row is a problem. Check format.",
+          "User information raised when creating receipt order lines in ...", "User information"))
+                                End Try
+                            End If
+                        End If
+                        iRowCount += 1
+                    Next
+                End If
 
-                Catch ex As Exception
+            Catch ex As Exception
                 MsgBox(statics.get_txt_header("Not created from Excel file. " + ex.Message, _
                           "User information raised when creating lines in ...", "User information"))
                 End Try

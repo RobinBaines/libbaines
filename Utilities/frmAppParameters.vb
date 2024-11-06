@@ -5,14 +5,9 @@
 'Notes: 
 'Modifications: 
 '------------------------------------------------
-Imports Utilities
-Imports System
 Imports System.Windows.Forms
-Imports System.Configuration
-Imports System.Data.SqlClient
-Imports System.Threading
 Imports System.Drawing
-Imports ExcelInterface.XMLExcelInterface
+
 Public Class frmAppParameters
 
     Dim vParent1 As b_app_parameter

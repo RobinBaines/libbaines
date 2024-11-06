@@ -5,17 +5,9 @@
 'Notes: 
 'Modifications: 
 '------------------------------------------------
-Imports Utilities
-Imports System
-Imports System.Configuration
 Imports System.Data.SqlClient
-Imports System.Threading
-Imports ExcelInterface.XMLExcelInterface
-Imports System.ComponentModel
-Imports System.IO
-Imports System.Collections
 Imports System.Windows.Forms
-Imports System.Drawing
+'Imports System.Drawing
 Public Class frmAdhocViews
 
     Friend WithEvents dgParent As dgvEnter

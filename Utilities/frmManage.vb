@@ -651,73 +651,7 @@ Public Class frmManage
         End Try
     End Sub
 #End Region
-#Region "Print"
-    Protected Overrides Sub tsbPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim tp As TabPage = Me.TabControl1.SelectedTab
-        Dim dgv As dgvEnter
-        For Each c3 As Control In tp.Controls
-            dgv = TryCast(c3, dgvEnter)
-            If Not dgv Is Nothing Then
-                Try
-                    If dgv.Name = vLang.dg.Name Or _
-                    dgv.Name = vusr.dg.Name Or _
-                    dgv.Name = vform.dg.Name Or _
-                    dgv.Name = vtble.dg.Name Or _
-                    dgv.Name = vformat.dg.Name Or _
-                    dgv.Name = vusr.dg.Name Or _
-                    dgv.Name = vtxt.dg.Name _
-                    Then
-                        PrintToExcel(tp.Text, dgv)
-                    Else
-                        If dgv.Name = vgrp.dg.Name Then
-                            PrintGroups()
-                        End If
-                    End If
-                Catch ex As Exception
-                End Try
-            End If
-        Next
-    End Sub
 
-    'Print the groups with the forms.
-    Protected Sub PrintGroups()
-        Dim cur = Me.Cursor
-        Try
-            Me.Cursor = Cursors.WaitCursor
-            Dim pr As New ExcelInterface.XMLExcelInterface("")  '"" is the Network path so we go local.
-            pr.OpenExcelBook(ExcelInterface.Paths.Local, "", "Groups", False, My.Settings.XMLTemplate)
-            pr.NewSheet("Groups", _
-                "&amp;LUsing data from " + "Groups" + "." + "&amp;CPrinted on &amp;D &amp;T. " + "&amp;RPage &amp;P of &amp;N", _
-                True, "Groups")
-            pr.WriteColumnWidths(M_form_grpDataGridView, MainDefs.DONOTPRINT, False, 0)
-
-            Dim sD As System.Data.DataRowView
-            Dim aRow As TheDataSet.m_grpRow
-            Me.M_grpBindingSource.MoveFirst()
-            Dim iPosition As Integer = -1
-            Dim iFirstPosition As Integer
-            iFirstPosition = M_grpBindingSource.Position
-
-
-            Do While iPosition <> M_grpBindingSource.Position
-                iPosition = M_grpBindingSource.Position
-                sD = Me.M_grpBindingSource.Current
-                aRow = sD.Row
-
-                pr.WriteStringToExcel("Group#" + aRow.grp + "#", ExcelInterface.ExcelStringFormats.Bold10)
-                pr.WriteDataGrid(M_form_grpDataGridView, MainDefs.DONOTPRINT, False, 0, False, False, True)
-                pr.WriteStringToExcel("#", ExcelInterface.ExcelStringFormats.Bold10)
-                Me.M_grpBindingSource.MoveNext()
-
-            Loop
-            M_grpBindingSource.Position = iFirstPosition
-            pr.CloseExcelBook()
-            NAR(pr) ' = Nothing
-        Catch ex As Exception
-        End Try
-        Me.Cursor = cur
-    End Sub
-#End Region
     'Start dialog for selecting forms for groups.
     Private Sub M_grpDataGridView_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles M_grpDataGridView.KeyPress
         Try

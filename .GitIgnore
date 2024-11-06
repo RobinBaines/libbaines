@@ -5,9 +5,18 @@ Utilities/bin/
 Utilities/obj/
 TestApp/TestApp/bin/
 TestApp/TestApp/obj/
+TestApp/packages/
+TestApp/.vs/TestApp/FileContentIndex/
+TestApp/TestApp/old/
 SQL/Patches/
 SQL/All/
+ExcelInterface/packages.config
+packages/
 UNUSEDCODE/
+ExcelInterface/.vs/
+TestApp/TestApp/.vs/
+Utilities/.vs/
+
 
 #Files to ignore #
 *.xlsx
@@ -35,6 +44,7 @@ UNUSEDCODE/
 *.rar
 *.tar
 *.zip
+
 
 # Logs and databases #
 ######################

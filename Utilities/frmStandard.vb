@@ -10,18 +10,9 @@
 '20200915 added Protected Overridable Sub SetDialogStartPosition(). Default is 40, 40.
 '20221014 added help text.
 '------------------------------------------------
-Imports System
-Imports System.Collections.Generic
-Imports System.Text
-Imports System.Xml
-Imports System.ComponentModel
 Imports System.Windows.Forms
-Imports System.Text.RegularExpressions
 Imports System.Drawing
-Imports System.Runtime
-Imports ExcelInterface.XMLExcelInterface
 
-Imports Utilities
 Public Class frmStandard
 
     Public vGrids As New List(Of dgColumns)
@@ -892,37 +883,38 @@ Public Class frmStandard
         PrintToExcel(strFileName, dg)
     End Sub
 
-    Protected Sub PrintToExcel(ByVal strHeader As String, _
+    Protected Sub PrintToExcel(ByVal strHeader As String,
        ByVal dg As DataGridView)
         Dim strFilename = strHeader.Replace(" ", "_").Replace(".", "_").Replace("\", "_").Replace("/", "_")
         PrintToExcel(strFilename, strFilename, dg)
     End Sub
-    Protected Sub PrintToExcel(ByVal strFilename As String, _
-        ByVal strHeader As String, _
+    Protected Sub PrintToExcel(ByVal strFilename As String,
+        ByVal strHeader As String,
                 ByVal dg As DataGridView)
 
         PrintToExcel(strFilename, strFilename, "", dg)
     End Sub
 
     '20161102 Added parameter strPath
-    Protected Sub PrintToExcel(ByVal strPath As String, _
-                               ByVal strFilename As String, _
-      ByVal strHeader As String, _
-      ByVal strFooter As String, _
+    Protected Sub PrintToExcel(ByVal strPath As String,
+                               ByVal strFilename As String,
+      ByVal strHeader As String,
+      ByVal strFooter As String,
       ByVal dg As DataGridView)
 
         Dim cur = Me.Cursor
         Try
             Me.Cursor = Cursors.WaitCursor
 
-            Dim pr As New ExcelInterface.XMLExcelInterface("")  '"" is the Network path so we go local.
+            Dim pr As New ExcelInterface.CXML("")
             pr.OpenExcelBook(strPath, strFilename, False, My.Settings.XMLTemplate, False)
+
 
             '20091005 Sheetname should not contain . / \ etc and not longer than 30.
             Dim strSheetName As String = strFilename
             If strSheetName.Length > 30 Then strSheetName = strSheetName.Substring(0, 30)
-            pr.NewSheet(strSheetName, _
-                "&amp;LUsing data from " + strFilename + "." + "&amp;CPrinted on &amp;D &amp;T. " + "&amp;RPage &amp;P of &amp;N", _
+            pr.NewSheet(strSheetName,
+                "&amp;LUsing data from " + strFilename + "." + "&amp;CPrinted on &amp;D &amp;T. " + "&amp;RPage &amp;P of &amp;N",
                 True, strFooter)
             pr.WriteDataGrid(dg, MainDefs.DONOTPRINT, False, 0, False)
             pr.CloseExcelBook()
@@ -934,17 +926,16 @@ Public Class frmStandard
         End Try
     End Sub
 
-    Protected Sub PrintToExcel(ByVal strFilename As String, _
-        ByVal strHeader As String, _
-        ByVal strFooter As String, _
+    Protected Sub PrintToExcel(ByVal strFilename As String,
+        ByVal strHeader As String,
+        ByVal strFooter As String,
         ByVal dg As DataGridView)
 
-        'PrintToExcel(ExcelInterface.Paths.Local, strFilename, strHeader, strFooter, dg)
         Dim cur = Me.Cursor
         Try
             Me.Cursor = Cursors.WaitCursor
 
-            Dim pr As New ExcelInterface.XMLExcelInterface("")  '"" is the Network path so we go local.
+            Dim pr As New ExcelInterface.CXML("")
             pr.OpenExcelBook(ExcelInterface.Paths.Local, "", strFilename, False, My.Settings.XMLTemplate)
 
             '20091005 Sheetname should not contain . / \ etc and not longer than 30.
@@ -966,69 +957,6 @@ Public Class frmStandard
             Me.Cursor = cur
         End Try
     End Sub
-    ' Print parent and 2 children
-    Protected Sub PrintDetailToExcel(ByVal strHeader As String, ByVal dgParent As DataGridView, _
-            ByVal dgChild1 As DataGridView, ByVal dgChild2 As DataGridView)
-        Dim cur = Me.Cursor
-        Try
-            Me.Cursor = Cursors.WaitCursor
-
-            Dim pr As New ExcelInterface.XMLExcelInterface("")  '"" is the Network path so we go local.
-            PrintDetailToExcel(pr, strHeader.Replace(" ", "_").Replace(".", "_"), strHeader, "", dgParent, dgChild1)
-            pr.WriteStringToExcel("#", ExcelInterface.ExcelStringFormats.Bold10)
-            pr.WriteDataGrid(dgChild2, MainDefs.DONOTPRINT, False, 0, False, False, True)
-            pr.CloseExcelBook()
-            NAR(pr) ' = Nothing
-        Catch ex As Exception
-            MsgBox("Could not create report." & ex.Message)
-        Finally
-            Me.Cursor = cur
-        End Try
-    End Sub
-
-
-
-    ''' <summary>
-    ''' Print parent and 1 child
-    ''' </summary>
-    ''' <param name="strHeader"></param>
-    ''' <param name="dgParent"></param>
-    ''' <param name="dgChild1"></param>
-    ''' <remarks></remarks>
-    Protected Sub PrintDetailToExcel(ByVal strHeader As String, ByVal dgParent As DataGridView _
-    , ByVal dgChild1 As DataGridView)
-        Dim cur = Me.Cursor
-        Try
-            Me.Cursor = Cursors.WaitCursor
-            Dim pr As New ExcelInterface.XMLExcelInterface("")  '"" is the Network path so we go local.
-            PrintDetailToExcel(pr, strHeader.Replace(" ", "_").Replace(".", "_").Replace("\", "_").Replace("/", "_"), _
-                    strHeader, "", dgParent, dgChild1)
-            pr.CloseExcelBook()
-            NAR(pr) ' = Nothing
-        Catch ex As Exception
-            MsgBox("Could not create report." & ex.Message)
-        Finally
-            Me.Cursor = cur
-        End Try
-
-    End Sub
-    Protected Sub PrintDetailToExcel(ByVal strHeader As String, ByVal strFooter As String, ByVal dgParent As DataGridView _
-    , ByVal dgChild1 As DataGridView)
-        Dim cur = Me.Cursor
-        Try
-            Me.Cursor = Cursors.WaitCursor
-            Dim pr As New ExcelInterface.XMLExcelInterface("")  '"" is the Network path so we go local.
-            PrintDetailToExcel(pr, strHeader.Replace(" ", "_").Replace(".", "_").Replace("\", "_").Replace("/", "_"), _
-                    strHeader, strFooter, dgParent, dgChild1)
-            pr.CloseExcelBook()
-            NAR(pr) ' = Nothing
-        Catch ex As Exception
-            MsgBox("Could not create report." & ex.Message)
-        Finally
-            Me.Cursor = cur
-        End Try
-
-    End Sub
 
     Public Sub NAR(ByRef o As Object)
 
@@ -1044,28 +972,7 @@ Public Class frmStandard
         GC.WaitForPendingFinalizers()
     End Sub
 
-    Private Sub PrintDetailToExcel(ByVal pr As ExcelInterface.XMLExcelInterface, _
-            ByVal strFilename As String, _
-            ByVal strHeader As String, ByVal strFooter As String, ByVal dgParent As DataGridView, _
-            ByVal dgChild1 As DataGridView)
 
-        'Template is a string and not a file reference.
-        pr.OpenExcelBook(ExcelInterface.Paths.Local, "", strFilename, False, My.Settings.XMLTemplate)
-
-        '20091005 Sheetname should not contain . / \ etc and not longer than 30.
-        Dim strSheetName As String = strFilename
-        If strSheetName.Length > 30 Then strSheetName = strSheetName.Substring(0, 30)
-        pr.NewSheet(strSheetName, _
-            "&amp;LUsing data from " + strFilename + "." + "&amp;CPrinted on &amp;D &amp;T. " + "&amp;RPage &amp;P of &amp;N", _
-            True, strFooter)
-        pr.WriteColumnWidths(dgParent, MainDefs.DONOTPRINT, False, 0)
-        pr.WriteStringToExcel(strHeader, ExcelInterface.ExcelStringFormats.Bold10)
-        pr.WriteStringToExcel("#", ExcelInterface.ExcelStringFormats.Bold10)
-        pr.WriteDataGrid(dgParent, MainDefs.DONOTPRINT, True, 0, False, False, True)
-        pr.WriteStringToExcel("#", ExcelInterface.ExcelStringFormats.Bold10)
-        pr.WriteDataGrid(dgChild1, MainDefs.DONOTPRINT, False, 0, False, False, True)
-        'pr.CloseExcelBook()
-    End Sub
     Protected Overridable Sub tsbPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbPrint.Click
     End Sub
     Protected Overridable Sub tsbPrintdetail_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbPrintdetail.Click

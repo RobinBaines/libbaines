@@ -99,9 +99,11 @@ Public Class clLogging
                     Directory.CreateDirectory(Path.GetDirectoryName(Logfile))
                 End If
                 Dim message As String = String.Format("{0} - {1}", DateTime.Now, line)
-                Dim tw As TextWriter = New StreamWriter(Logfile, True)
-                tw.WriteLine(message)
-                tw.Close()
+
+                '20241025 Just to be certain about disposing use an Using construct.
+                Using tw As TextWriter = New StreamWriter(Logfile, True)
+                    tw.WriteLine(message)
+                End Using
 
                 'This call has no effect in GUI applications.
                 Console.WriteLine(message)

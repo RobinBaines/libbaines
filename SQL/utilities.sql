@@ -4,6 +4,7 @@
 --
 --20120716 Remove old bUsers and bLevels tables.
 --Remove TYPE definitions TYP_M_STRING and TYP_M_LANG.
+--20241031 added [m_form_helptext]
 --See readme.sql for instructions.
 ------------------------------------------------------------------
 go
@@ -17,6 +18,21 @@ go
 -------------------------------------------------
 --utilities
 -------------------------------------------------
+IF NOT EXISTS(SELECT 1 FROM sys.columns 
+          WHERE Name = N'helptext'
+          AND Object_ID = Object_ID(N'[m_form_helptext]'))
+BEGIN
+
+CREATE TABLE [m_form_helptext](
+	[form] [nvarchar](100) NOT NULL,
+	[helptext] [nvarchar](max) NULL,
+	PRIMARY KEY CLUSTERED ([form] ASC),
+	FOREIGN KEY([form]) REFERENCES [dbo].[m_form] ([form]) ON UPDATE CASCADE ON DELETE CASCADE
+)
+END
+GO
+
+
 IF EXISTS (SELECT * FROM sys.tables where object_id = OBJECT_ID('dbo.m_sql_characters'))
 BEGIN
 	DROP TABLE [dbo].[m_sql_characters]

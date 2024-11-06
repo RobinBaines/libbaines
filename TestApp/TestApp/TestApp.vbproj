@@ -17,6 +17,9 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>2.0</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,11 +32,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,10 +56,13 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ExcelInterface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ExcelInterface, Version=1.0.0.28, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ExcelInterface\bin\Release\ExcelInterface.dll</HintPath>
+      <HintPath>..\..\ExcelInterface\bin\Debug\ExcelInterface.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -86,9 +89,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Utilities, Version=1.0.1.15, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Utilities, Version=1.0.1.18, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Utilities\bin\Release\Utilities.dll</HintPath>
+      <HintPath>..\..\Utilities\bin\Debug\Utilities.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -108,8 +111,13 @@
     <Compile Include="frmPollingExample.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gen_m_usr.vb" />
-    <Compile Include="ReadExcel.vb" />
+    <Compile Include="frmUsrLog2.Designer.vb">
+      <DependentUpon>frmUsrLog2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUsrLog2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gen_TheDataSet_v_usr_log.vb" />
     <Compile Include="TestAppMain.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +152,9 @@
     <EmbeddedResource Include="frmPollingExample.resx">
       <DependentUpon>frmPollingExample.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmUsrLog2.resx">
+      <DependentUpon>frmUsrLog2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -153,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
