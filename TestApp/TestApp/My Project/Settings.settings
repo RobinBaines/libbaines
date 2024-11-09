@@ -29,9 +29,15 @@
     <Setting Name="TestDataBase" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="SQLAuthenticationConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=BAINESLENOVO;Initial Catalog=TestDb;User ID=RPBSQL;Password=Robin2023!Baines</Value>
+    </Setting>
+    <Setting Name="SQLAuthentication" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
     <Setting Name="ConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;ConnectionString&gt;Data Source=BAINESLENOVO;Initial Catalog=TestDb;Integrated Security=True;Encrypt=False;TrustServerCertificate=True&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
@@ -39,17 +45,11 @@
     </Setting>
     <Setting Name="UtilitiesConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;ConnectionString&gt;Data Source=BAINESLENOVO;Initial Catalog=TestDb;Integrated Security=True;Encrypt=False;TrustServerCertificate=True&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=BAINESLENOVO;Initial Catalog=TestDb;Integrated Security=True;Encrypt=False;TrustServerCertificate=True</Value>
-    </Setting>
-    <Setting Name="SQLAuthenticationConnectionString" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=BAINESLENOVO;Initial Catalog=gis2;User ID=RPBSQL;Password=Robin2023!Baines</Value>
-    </Setting>
-    <Setting Name="SQLAuthentication" Type="System.Boolean" Scope="Application">
-      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

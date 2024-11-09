@@ -146,6 +146,25 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=BAINESLENOVO;Initial Catalog=TestDb;User ID=RPBSQL;Password=Robin2023"& _ 
+            "!Baines")>  _
+        Public ReadOnly Property SQLAuthenticationConnectionString() As String
+            Get
+                Return CType(Me("SQLAuthenticationConnectionString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public ReadOnly Property SQLAuthentication() As Boolean
+            Get
+                Return CType(Me("SQLAuthentication"),Boolean)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Data Source=BAINESLENOVO;Initial Catalog=TestDb;Integrated Security=True;Encrypt="& _ 
             "False;TrustServerCertificate=True")>  _
@@ -163,25 +182,6 @@ Namespace My
         Public ReadOnly Property UtilitiesConnectionString() As String
             Get
                 Return CType(Me("UtilitiesConnectionString"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=BAINESLENOVO;Initial Catalog=gis2;User ID=RPBSQL;Password=Robin2023!B"& _ 
-            "aines")>  _
-        Public ReadOnly Property SQLAuthenticationConnectionString() As String
-            Get
-                Return CType(Me("SQLAuthenticationConnectionString"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public ReadOnly Property SQLAuthentication() As Boolean
-            Get
-                Return CType(Me("SQLAuthentication"),Boolean)
             End Get
         End Property
     End Class

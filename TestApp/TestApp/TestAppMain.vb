@@ -19,16 +19,11 @@ Public Class TestAppMain
     Protected WithEvents tsbfrmTest As System.Windows.Forms.ToolStripButton
     Const MENU_TESTFORM As String = "TestForm"
 
-    'Protected WithEvents tsbfrmFlow As System.Windows.Forms.ToolStripButton
-    'Const MENU_FLOWFORM As String = "FlowForm"
-
-    'This is a drop down called 'Some Tests' with 2 items which open forms.
+    'This is a drop down called 'Some Tests' with 2 buttons which open the same form.
     Const MENU_TEST As String = "Some Tests"
     Const MENU_TEST_TESTFORM As String = "Polling"
     Const MENU_TEST_POLLING As String = "Same as Polling"
     Protected WithEvents tsbSomeTests As System.Windows.Forms.ToolStripMenuItem
-
-    'Public SQLParser As clParseSQL
 
 #Region "New"
     Public Sub New()
@@ -212,8 +207,7 @@ Public Class TestAppMain
         My.Settings.Save()
     End Sub
 
-    'When developing the connection string will be one defined in the Settings.
-    'In this case 'Data Source=RPB4;Initial Catalog=Utilities;Integrated Security=True'
+    'When developing the connection string will be defined in the Settings.
     'To avoid having to alter config files when going live when connections will be different the following call must be made
     'for all table adapters. It constructs the connection string depending on whether the development computer is being used
     'and on whether the test database (aka Quality database) is being used.
@@ -269,15 +263,13 @@ Public Class TestAppMain
 
 #Region "FromThread"
     'The MainForm parent has a 5 second timer. 
-    'This is used to call the frmStandard.TimerInMainThread() which can be overriden.
-    'frmPollingExample() illustrates this.
+    'This is used to call the frmStandard.TimerInMainThread() which can be overriden, see frmPollingExample().
 
-    'This example also illustrates the use of the b_semaphore table for passing messages.
-    'MainForm polls b_semaphore and passes changes to all forms. 
+    'TestApp also illustrates use of the b_semaphore table for passing messages.
     Friend WithEvents b_semaphoreTableAdapter As TheDataSetTableAdapters.b_semaphoreTableAdapter = Nothing
 
     ' The  TimerInMainThread call is made in the main thread and not in the timer thread.
-    'There is also a timer thread call but this may not be used for the UI.
+    'There is also a timer thread call, which should not be used for the UI.
 
     Dim iCount As Integer = 0
     Const COUNT_TO = 3
@@ -298,8 +290,8 @@ Public Class TestAppMain
             'every 3 * 5 = 15 seconds.
             If iCount >= COUNT_TO Then
 
-                'When calling SQL using a TheDataSetTableAdapters ensure the connection string 
-                'is set to the live connection. Otherwise the design time connection in the dataset will be used.
+                'When calling SQL using a TheDataSetTableAdapters ensure the connection string is set to the live connection. 
+                'Otherwise the design time connection in the dataset will be used.
                 If b_semaphoreTableAdapter Is Nothing Then
                     b_semaphoreTableAdapter = New TheDataSetTableAdapters.b_semaphoreTableAdapter
                     b_semaphoreTableAdapter.Connection.ConnectionString = GetConnectionString()
