@@ -5,18 +5,9 @@
 'Notes: 
 'Modifications: 
 '------------------------------------------------
-Imports Utilities
-Imports System
-Imports System.Configuration
-Imports System.Data.SqlClient
-Imports System.Threading
-Imports ExcelInterface.XMLExcelInterface
-Imports System.ComponentModel
-Imports System.IO
-Imports System.Collections
+
 Imports System.Windows.Forms
 Imports System.Drawing
-'Imports System.Linq
 
 Public Class frmMetaView
     Dim vParent As ADHOCDataSet_v_all_views

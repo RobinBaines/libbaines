@@ -5,19 +5,9 @@
 'Notes: 
 'Modifications: 
 '------------------------------------------------
-'Imports Utilities
-Imports System
-Imports System.Configuration
-Imports System.Data.SqlClient
-Imports System.Threading
-Imports ExcelInterface.XMLExcelInterface
-Imports System.ComponentModel
-Imports System.IO
-Imports System.Collections
 Imports System.Windows.Forms
 Imports System.Drawing
-'Imports Microsoft.SqlServer.Management.SqlParser.Parser
-''Imports Microsoft.Data.Schema.ScriptDom.Sql
+
 Public Class frmMetaProc
     Dim vROUTINES As MetaData_v_INFORMATION_SCHEMA_ROUTINES
     Dim vReferenced As MetaData_v_referenced_objects
