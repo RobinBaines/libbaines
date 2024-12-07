@@ -39,6 +39,7 @@
 '20130224 Added strRowToRepeat so that the repeated row at the top of a printed page can be adjusted. Use by adding the row range: for example R1 or R2:R3.
 '20200101 In CloseExcelBook tried to remove the Excel which remains behind after an excel sheet is closed by doing this but seems not to make a difference.
 '20200914 Is Savewb() Added app.Visible and removed app.UserControl = True.
+'20241127 clean up the code and improved error handling if destination folder of excel file does not have r/w access.
 '------------------------------------------------
 Imports System
 Imports System.Collections.Generic
@@ -205,7 +206,7 @@ Public Class XMLExcelInterface
     Dim strFirstSheet As String
     Dim strLocalOutput = My.Computer.FileSystem.SpecialDirectories.MyDocuments
     Dim strNetworkOutput = My.Computer.FileSystem.SpecialDirectories.MyDocuments    'My.Settings.OutputPath
-    Dim stW As StreamWriter
+    Dim stW As StreamWriter = Nothing
     Dim strFileName As String
     Dim strOriginalFileName As String
     Dim strCurrentSheetName As String
@@ -449,87 +450,90 @@ Public Class XMLExcelInterface
 
     Private Sub CreateStyles()
 
-        'Write all the Styles to the XML file.
-        stW.WriteLine("<Styles>")
-        Dim ef As ExcelFormat
+        If stW IsNot Nothing Then
 
-        For Each ef In ExcelFormats
-            stW.WriteLine("<Style ss:ID='" & ef.Name & "'>")
+            'Write all the Styles to the XML file.
+            stW.WriteLine("<Styles>")
+            Dim ef As ExcelFormat
 
-            If ef.BorderBottom = True Or ef.BorderLeft = True Or ef.BorderRight = True Or ef.BorderTop = True Then
+            For Each ef In ExcelFormats
+                stW.WriteLine("<Style ss:ID='" & ef.Name & "'>")
 
-                stW.WriteLine("<Borders>")
-                If ef.BorderBottom = True Then
-                    stW.WriteLine("<Border ss:Position='Bottom' ss:LineStyle='Continuous' ss:Weight='" & _
-                    GetBorderWeight(ef.BorderWeight) & "'/>")
+                If ef.BorderBottom = True Or ef.BorderLeft = True Or ef.BorderRight = True Or ef.BorderTop = True Then
+
+                    stW.WriteLine("<Borders>")
+                    If ef.BorderBottom = True Then
+                        stW.WriteLine("<Border ss:Position='Bottom' ss:LineStyle='Continuous' ss:Weight='" &
+                        GetBorderWeight(ef.BorderWeight) & "'/>")
+                    End If
+                    If ef.BorderLeft = True Then
+                        stW.WriteLine("<Border ss:Position='Left' ss:LineStyle='Continuous' ss:Weight='" &
+                        GetBorderWeight(ef.BorderWeight) & "'/>")
+                    End If
+                    If ef.BorderRight = True Then
+                        stW.WriteLine("<Border ss:Position='Right' ss:LineStyle='Continuous' ss:Weight='" &
+                        GetBorderWeight(ef.BorderWeight) & "'/>")
+                    End If
+                    If ef.BorderTop = True Then
+                        stW.WriteLine("<Border ss:Position='Top' ss:LineStyle='Continuous' ss:Weight='" &
+                        GetBorderWeight(ef.BorderWeight) & "'/>")
+                    End If
+                    stW.WriteLine("</Borders>")
                 End If
-                If ef.BorderLeft = True Then
-                    stW.WriteLine("<Border ss:Position='Left' ss:LineStyle='Continuous' ss:Weight='" & _
-                    GetBorderWeight(ef.BorderWeight) & "'/>")
+                Dim str As String
+                str = "<Font x:Family='" & ef.Font & "'  ss:Size='" & ef.FontSize.ToString & "' "
+                If ef.Colour.Length <> 0 Then
+                    str = str & " ss:Color='" & ef.Colour & "'"
                 End If
-                If ef.BorderRight = True Then
-                    stW.WriteLine("<Border ss:Position='Right' ss:LineStyle='Continuous' ss:Weight='" & _
-                    GetBorderWeight(ef.BorderWeight) & "'/>")
+                If ef.Bold = True Then
+                    str = str & " ss:Bold='1'"
                 End If
-                If ef.BorderTop = True Then
-                    stW.WriteLine("<Border ss:Position='Top' ss:LineStyle='Continuous' ss:Weight='" & _
-                    GetBorderWeight(ef.BorderWeight) & "'/>")
+                If ef.Italic = True Then
+                    str = str & " ss:Italic='1'"
                 End If
-                stW.WriteLine("</Borders>")
-            End If
-            Dim str As String
-            str = "<Font x:Family='" & ef.Font & "'  ss:Size='" & ef.FontSize.ToString & "' "
-            If ef.Colour.Length <> 0 Then
-                str = str & " ss:Color='" & ef.Colour & "'"
-            End If
-            If ef.Bold = True Then
-                str = str & " ss:Bold='1'"
-            End If
-            If ef.Italic = True Then
-                str = str & " ss:Italic='1'"
-            End If
 
-            If ef.Underlined <> "" Then
-                str = str & " ss:Underline='" & ef.Underlined & "'"
-            End If
+                If ef.Underlined <> "" Then
+                    str = str & " ss:Underline='" & ef.Underlined & "'"
+                End If
 
-            str = str & " />"
-            stW.WriteLine(str)
-            If ef.BackGround <> "" Then
-                stW.WriteLine("<Interior ss:Color='" & ef.BackGround & "' ss:Pattern='Solid'/>")
-            End If
+                str = str & " />"
+                stW.WriteLine(str)
+                If ef.BackGround <> "" Then
+                    stW.WriteLine("<Interior ss:Color='" & ef.BackGround & "' ss:Pattern='Solid'/>")
+                End If
 
-            '20111116
-            If ef.Format = "@" Then
-                stW.WriteLine("<NumberFormat/>")
-            Else
-                stW.WriteLine("<NumberFormat ss:Format='" & ef.Format & "'/>")
-            End If
-
-            If ef.RightAligned = True Then
-                stW.WriteLine("<Alignment ss:Horizontal='Right' ss:Vertical='Bottom' ss:WrapText='1'/>")
-            Else
-                'If ef.WordWrap = True Then
-                '20110423 RPB. Add ss:WrapText='1' word wrap text. 
-                'See also modification of 20110423 to the Row attribute.
-                If blnWordWrap = True Or ef.WordWrap = True Then
-                    stW.WriteLine("<Alignment ss:Vertical='Bottom' ss:WrapText='1' />")
+                '20111116
+                If ef.Format = "@" Then
+                    stW.WriteLine("<NumberFormat/>")
                 Else
-                    stW.WriteLine("<Alignment ss:Vertical='Bottom' />")
+                    stW.WriteLine("<NumberFormat ss:Format='" & ef.Format & "'/>")
                 End If
-                'Else
-                'stW.WriteLine("<Alignment ss:Vertical='Bottom' />")
-                'End If
-            End If
-            stW.WriteLine("</Style>")
-        Next
 
-        'Add test sysles here.
-        'stW.WriteLine("<Style ss:ID='s999'>")
-        'stW.WriteLine("<Alignment ss:Vertical='Bottom' ss:WrapText='1'/>")
-        'stW.WriteLine("</Style>")
+                If ef.RightAligned = True Then
+                    stW.WriteLine("<Alignment ss:Horizontal='Right' ss:Vertical='Bottom' ss:WrapText='1'/>")
+                Else
+                    'If ef.WordWrap = True Then
+                    '20110423 RPB. Add ss:WrapText='1' word wrap text. 
+                    'See also modification of 20110423 to the Row attribute.
+                    If blnWordWrap = True Or ef.WordWrap = True Then
+                        stW.WriteLine("<Alignment ss:Vertical='Bottom' ss:WrapText='1' />")
+                    Else
+                        stW.WriteLine("<Alignment ss:Vertical='Bottom' />")
+                    End If
+                    'Else
+                    'stW.WriteLine("<Alignment ss:Vertical='Bottom' />")
+                    'End If
+                End If
+                stW.WriteLine("</Style>")
+            Next
 
-        stW.WriteLine("</Styles>")
+            'Add test sysles here.
+            'stW.WriteLine("<Style ss:ID='s999'>")
+            'stW.WriteLine("<Alignment ss:Vertical='Bottom' ss:WrapText='1'/>")
+            'stW.WriteLine("</Style>")
+
+            stW.WriteLine("</Styles>")
+        End If
     End Sub
 
     Public Sub OpenExcelBook(ByVal pPath As Paths, ByVal strSubDirectory As String, ByVal _strFileName As String, _
@@ -546,20 +550,30 @@ Public Class XMLExcelInterface
         '20121121 Add the start up path because Terminal Server does not have that as the default path.
         strTemplatePath = System.Windows.Forms.Application.StartupPath + "\" + strTemplatePath
         If strFileName.Length <> 0 Then
-
-            'Create target directory if it does not exist already.
-            If Not My.Computer.FileSystem.DirectoryExists(GetDirectory(pPath, strSubDirectory)) Then
+            Try
                 'Create target directory if it does not exist already.
-                My.Computer.FileSystem.CreateDirectory(GetDirectory(pPath, strSubDirectory))
-            End If
+                If Not My.Computer.FileSystem.DirectoryExists(GetDirectory(pPath, strSubDirectory)) Then
+                    'Create target directory if it does not exist already.
+                    My.Computer.FileSystem.CreateDirectory(GetDirectory(pPath, strSubDirectory))
+                End If
 
-            'Try to save the Excel file with the new name.
-            strFileName = MakeUniquePath(0, blnUnique, pPath, strSubDirectory, _strFileName)
-            strOriginalFileName = strFileName
-            strFileName = strFileName.Replace(".xls", ".xml")
+                'Try to save the Excel file with the new name.
+                strFileName = MakeUniquePath(0, blnUnique, pPath, strSubDirectory, _strFileName)
+                strOriginalFileName = strFileName
+                strFileName = strFileName.Replace(".xls", ".xml")
 
-            FileCopy(strTemplatePath, strFileName)
-            stW = New StreamWriter(strFileName, True)
+                '20241127 Error handling when permission on Application.StartupPath is not present.
+                Try
+                    FileCopy(strTemplatePath, strFileName)
+                    stW = New StreamWriter(strFileName, True)
+                Catch ex As Exception
+                    MsgBox("Could not copy Excel template " + strTemplatePath + " in OpenExcelBook. Check r/w permission. " + ex.Message)
+                End Try
+
+            Catch ex As Exception
+                MsgBox("Could not CreateDirectory  " + GetDirectory(pPath, strSubDirectory) + " in OpenExcelBook. Check r/w permission. " + ex.Message)
+            End Try
+
             blnIsFirstSheet = True
             CreateStyles()
             strFirstSheet = ""
@@ -584,22 +598,32 @@ Public Class XMLExcelInterface
                 strPath = strPath + "\"
             End If
 
-            'Create target directory if it does not exist already.
-            If Not My.Computer.FileSystem.DirectoryExists(strPath) Then
+            Try 'GO899 No permission to write file should be visible for endusers.
+
                 'Create target directory if it does not exist already.
-                My.Computer.FileSystem.CreateDirectory(strPath)
-            End If
+                If Not My.Computer.FileSystem.DirectoryExists(strPath) Then
+                    'Create target directory if it does not exist already.
+                    My.Computer.FileSystem.CreateDirectory(strPath)
+                End If
 
-            'In the above version of OpenExcelBook the MakeUniquePath makes a unique name and then calls GetDirectory to create the complete name.
-            'Here the user is prompted to write over any other version of the xlsx.
-            'strFileName = MakeUniquePath(0, blnUnique, pPath, strSubDirectory, _strFileName)
-            'GetDirectory(pPath, strSubDirectory) & strFileName & ".xlsx"
-            strFileName = strPath + _strFileName & ".xlsx"
-            strOriginalFileName = strFileName
-            strFileName = strFileName.Replace(".xls", ".xml")
+                'In the above version of OpenExcelBook the MakeUniquePath makes a unique name and then calls GetDirectory to create the complete name.
+                'Here the user is prompted to write over any other version of the xlsx.
+                'strFileName = MakeUniquePath(0, blnUnique, pPath, strSubDirectory, _strFileName)
+                'GetDirectory(pPath, strSubDirectory) & strFileName & ".xlsx"
+                strFileName = strPath + _strFileName & ".xlsx"
+                strOriginalFileName = strFileName
+                strFileName = strFileName.Replace(".xls", ".xml")
 
-            FileCopy(strTemplatePath, strFileName)
-            stW = New StreamWriter(strFileName, True)
+                '20241127 Error handling when permission on Application.StartupPath is not present.
+                Try
+                    FileCopy(strTemplatePath, strFileName)
+                    stW = New StreamWriter(strFileName, True)
+                Catch ex As Exception
+                    MsgBox("Could not copy Excel template " + strTemplatePath + " in OpenExcelBook. Check r/w permission. " + ex.Message)
+                End Try
+            Catch ex As Exception
+                MsgBox("Could not CreateDirectory  " + strPath + " in OpenExcelBook. Check r/w permission. " + ex.Message)
+            End Try
             blnIsFirstSheet = True
             CreateStyles()
             strFirstSheet = ""
@@ -615,19 +639,27 @@ Public Class XMLExcelInterface
 
         If strFileName.Length <> 0 Then
 
-            'Create target directory if it does not exist already.
-            If Not My.Computer.FileSystem.DirectoryExists(GetDirectory(pPath, strSubDirectory)) Then
-                My.Computer.FileSystem.CreateDirectory(GetDirectory(pPath, strSubDirectory))
-            End If
+            Try
+                'Create target directory if it does not exist already.
+                If Not My.Computer.FileSystem.DirectoryExists(GetDirectory(pPath, strSubDirectory)) Then
+                    My.Computer.FileSystem.CreateDirectory(GetDirectory(pPath, strSubDirectory))
+                End If
 
-            'Try to save the Excel file with the new name.
-            strFileName = MakeUniquePath(0, blnUnique, pPath, strSubDirectory, _strFileName)
-            strOriginalFileName = strFileName
-            strFileName = strFileName.Replace(".xls", ".xml")
+                'Try to save the Excel file with the new name.
+                strFileName = MakeUniquePath(0, blnUnique, pPath, strSubDirectory, _strFileName)
+                strOriginalFileName = strFileName
+                strFileName = strFileName.Replace(".xls", ".xml")
 
-            'FileCopy(strTemplatePath, strFileName)
-            stW = New StreamWriter(strFileName, False)
-            stW.WriteLine(strTemplate)
+                '20241127 Error handling when permission on Application.StartupPath is not present.
+                Try
+                    stW = New StreamWriter(strFileName, False)
+                    stW.WriteLine(strTemplate)
+                Catch ex As Exception
+                    MsgBox("Could not copy Excel template " + strFileName + " in OpenExcelBook. Check r/w permission. " + ex.Message)
+                End Try
+            Catch ex As Exception
+                MsgBox("Could not CreateDirectory  " + GetDirectory(pPath, strSubDirectory) + " in OpenExcelBook. Check r/w permission. " + ex.Message)
+            End Try
             blnIsFirstSheet = True
             CreateStyles()
             strFirstSheet = ""
@@ -658,7 +690,7 @@ Public Class XMLExcelInterface
         'Try
         '    xlApp.Application.ActivePrinter = strPrinter
         'Catch ex As Exception
-        '    MsgBox("Could not select Printer: " & strPrinter & " " & ex.Message, MsgBoxStyle.OkOnly)
+        '    MsgBox("Could Not select Printer:  " & strPrinter & " " & ex.Message, MsgBoxStyle.OkOnly)
         '    blnRet = False
         'Finally
         'End Try
@@ -669,7 +701,7 @@ Public Class XMLExcelInterface
 #Region "SheetOpenClose"
     Private Sub CloseASheet()
 
-        If Not stW Is Nothing Then
+        If stW IsNot Nothing Then
 
             'Write the XML to open a sheet.
             stW.WriteLine("<Worksheet ss:Name='" & strCurrentSheetName & "'>")
@@ -678,7 +710,7 @@ Public Class XMLExcelInterface
             If RowCount = 0 And ColumnCount = 0 Then
                 stW.WriteLine("<NamedRange ss:Name='Print_Area' ss:RefersTo=""='" & strCurrentSheetName & "'!R1C1:R41C14""/>")
             Else
-                stW.WriteLine("<NamedRange ss:Name='Print_Area' ss:RefersTo=""='" & strCurrentSheetName & "'!R1C1:R" & _
+                stW.WriteLine("<NamedRange ss:Name='Print_Area' ss:RefersTo=""='" & strCurrentSheetName & "'!R1C1:R" &
                 Me.RowCount.ToString() & "C" & (Me.ColumnCount - 1).ToString() & """/>")
             End If
 
@@ -718,8 +750,8 @@ Public Class XMLExcelInterface
 
             '2009090 RPB added CultureInfo to force writing in us format.
             Dim MyCultureInfo As CultureInfo = New CultureInfo("en-US")
-            stW.WriteLine("<PageMargins x:Bottom='" & dBottomMargin.ToString("0.00", MyCultureInfo) & "' x:Left='" & _
-                dLeftMargin.ToString("0.00", MyCultureInfo) & "' x:Right='" & dRightMargin.ToString("0.00", MyCultureInfo) & "' x:Top='" & _
+            stW.WriteLine("<PageMargins x:Bottom='" & dBottomMargin.ToString("0.00", MyCultureInfo) & "' x:Left='" &
+                dLeftMargin.ToString("0.00", MyCultureInfo) & "' x:Right='" & dRightMargin.ToString("0.00", MyCultureInfo) & "' x:Top='" &
                 dTopMargin.ToString("0.00", MyCultureInfo) & "'/>")
 
             stW.WriteLine("</PageSetup>")
@@ -818,12 +850,14 @@ Public Class XMLExcelInterface
 
     Private Sub WriteXMLData()
         Dim strT As String
-        For Each strT In XMLData
-            stW.WriteLine(strT)
+        If stW IsNot Nothing Then
+            For Each strT In XMLData
+                stW.WriteLine(strT)
 
-            '20200102
-            strT = ""
-        Next
+                '20200102
+                strT = ""
+            Next
+        End If
     End Sub
 
     Public Sub strCreateExcelSheet(ByVal dg As DataGridView, ByVal strFileName As String, ByVal strHeader As String, ByVal strFoot As String, _
@@ -896,57 +930,12 @@ Public Class XMLExcelInterface
         CloseExcelBookAndExitExcel()
 
         'Open the XML file in Excel.
-        'Dim oExcel As New Microsoft.Office.Interop.Excel.Application
-        'oExcel = New Microsoft.Office.Interop.Excel.Application
         Dim oExcel = CreateObject("Excel.Application")
 
         oExcel.Visible = True
         oExcel.UserControl = True
 
-        ' ''20200101 In CloseExcelBook tried to remove the Excel which remains behind after an excel sheet is closed by doing this but seems not to make a difference.
-        'If oExcel.COMAddIns.Count > 0 Then
-
-        '    For i As Integer = 0 To oExcel.COMAddIns.Count - 1
-        '        Try
-        '            oExcel.COMAddIns.Item(i).Connect = False
-        '            'MsgBox("Count " + i.ToString())
-        '            'The following is the Microsoft Power Pivot addin for Excel.
-        '            'MsgBox("App name " + oExcel.COMAddIns.Item(i).Description)
-        '        Catch ex As Exception
-        '            'MsgBox("Exception Count " + i.ToString() + " " + oExcel.COMAddIns.Item(i).Description + " " + oExcel.COMAddIns.Item(i).Application)
-        '        End Try
-
-        '    Next
-        'End If
-
-        'Dim objWMIService
-        'Dim colProcessList
-        'Dim objProcess
-        'Dim strComputer
-
-        'strComputer = "."
-        'Try
-        '    objWMIService = GetObject("winmgmts://./root/cimv2")  ' Task mgr
-        '    If Not objWMIService Is Nothing Then
-        '        Try
-        '            colProcessList = objWMIService.ExecQuery("Select * from Win32_Process Where Name in ('EXCEL.EXE') ")  '''''','Chrome.exe','iexplore.exe'
-        '            For Each objProcess In colProcessList
-        '                MsgBox(objProcess.ToString())
-        '                objProcess.Terminate()
-        '                MsgBox("2." + objProcess.ToString())
-        '            Next
-        '        Catch ex As Exception
-        '            MsgBox(ex.Message)
-        '        End Try
-        '    Else
-        '        MsgBox("winmgmts://./root/cimv2 NOT FOUND")
-        '    End If
-        'Catch ex As Exception
-        '    MsgBox("GetObject" + ex.Message)
-        'End Try
-
-
-        Dim oldCI As System.Globalization.CultureInfo = _
+        Dim oldCI As System.Globalization.CultureInfo =
             System.Threading.Thread.CurrentThread.CurrentCulture
 
         If blnRetainCulture = False Then
@@ -956,11 +945,6 @@ Public Class XMLExcelInterface
         Dim oBooks As Workbooks
         oBooks = oExcel.Workbooks
         wb = oBooks.Open(strFileName)    '.OpenXML(strFileName)
-
-        'Dim oSheet As Worksheet = wb.Application.ActiveWorkbook.ActiveSheet
-        'oSheet.Copy()
-        'oSheet.Select()
-        'Clipboard.SetDataObject(oSheet, True)
 
         'Save as and delete xml file.
         If blnCompleteProcessing = True Then
@@ -980,8 +964,6 @@ Public Class XMLExcelInterface
 
         GC.Collect()
         GC.WaitForPendingFinalizers()
-        'System.Threading.Thread.CurrentThread.CurrentCulture = Nothing
-
         Return strFileName
     End Function
 
@@ -1001,33 +983,29 @@ Public Class XMLExcelInterface
 
         'Write the XML required to finish the XML file.
         CloseASheet()
-        stW.WriteLine("</Workbook>")
-        stW.Flush()
-        stW.Close()
-        stW.Dispose()
-        stW = Nothing
+        If stW IsNot Nothing Then
+            stW.WriteLine("</Workbook>")
+            stW.Flush()
+            stW.Close()
+            stW.Dispose()
+            stW = Nothing
+        End If
         XMLData.Clear()
-
-        '20200204
         XMLData = Nothing
-
         Return strFileName
     End Function
 
 #End Region
 #Region "DataGrid"
 
-    Public Sub WriteColumnWidths(ByVal dg As DataGridView, ByVal strTagFilter As String, ByVal blnCurrentBold As Boolean, _
+    Public Sub WriteColumnWidths(ByVal dg As DataGridView, ByVal strTagFilter As String, ByVal blnCurrentBold As Boolean,
         ByVal iFirstColumn As Integer)
 
         'Display DataGridView in Excel.
         'Function requires that all headertexts of the datagridview are unique.
-        'Dim Cells As List(Of XMLExcelCell)
         Dim ColumnWidth As List(Of Int32)
-        'Cells = New List(Of XMLExcelCell)(dg.Columns.Count)
         ColumnWidth = New List(Of Int32)(dg.Columns.Count)
         ColumnWidth.Clear()
-        'Cells.Clear()
         Dim iCellsColumn = 0
 
         'Set up column widths, formats and headers.
@@ -1040,10 +1018,6 @@ Public Class XMLExcelInterface
             End If
         Next
         SetAutofit(ColumnWidth)
-
-        'Set formats for data.
-        'Cells.Clear()
-
     End Sub
 
     Public Sub WriteDataGrid(ByVal dg As DataGridView, ByVal strTagFilter As String, ByVal blnCurrentBold As Boolean, _
@@ -1213,13 +1187,9 @@ Public Class XMLExcelInterface
         ColumnWidth.Clear()
         For Each cell As XMLExcelCell In Cells
             cell.strValue = ""
-            cell = Nothing
         Next
 
         Cells.Clear()
-        ColumnWidth = Nothing
-        Cells = Nothing
-
         GC.Collect()
         GC.WaitForPendingFinalizers()
     End Sub

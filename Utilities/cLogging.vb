@@ -10,6 +10,7 @@
 '20200428 FilterFile. Added check that the file exists before trying to filter.
 '20200430 ReNameLogFile modified to set the Logfile!!
 '20240917 added try/catch with msgbox. Missing r/w permission may be the cause and it proves better to catch this than letting it go.
+'20241127 improved error handling if destination folder of log file does not have r/w access.
 ''------------------------------------------------
 Imports System
 Imports System.IO
@@ -87,13 +88,15 @@ Public Class clLogging
         End If
     End Sub
 
-    'log messages to the log file and show in the console.
-    Public Shared Sub Log(line As String)
 
+    'log messages to the log file and show in the console.
+    Public Shared Function Log(line As String) As Boolean
+
+        Dim blnFailed As Boolean = False
         '20240924 added this check.
         If DebugLogging Then
 
-            '20240917 added try/catch with msgbox. Missing r/w permission may be the cause and it proves better to catch this than letting it go.
+            '20240917 added try/catch with msgbox and return blnFailed. Missing r/w permission may be the cause and it proves better to catch this than letting it go.
             Try
                 If Not Directory.Exists(Path.GetDirectoryName(Logfile)) Then
                     Directory.CreateDirectory(Path.GetDirectoryName(Logfile))
@@ -108,10 +111,12 @@ Public Class clLogging
                 'This call has no effect in GUI applications.
                 Console.WriteLine(message)
             Catch ex As Exception
+                blnFailed = True
                 MsgBox(line + " could not be written to the log. Check r/w permission. " + ex.Message)
             End Try
         End If
-    End Sub
+        Return blnFailed
+    End Function
 
     'search a logfile looking for long delays.
     Public Shared Sub FilterFile(FileName As String)

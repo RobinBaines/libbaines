@@ -895,37 +895,6 @@ Public Class frmStandard
         PrintToExcel(strFilename, strFilename, "", dg)
     End Sub
 
-    '20161102 Added parameter strPath
-    Protected Sub PrintToExcel(ByVal strPath As String,
-                               ByVal strFilename As String,
-      ByVal strHeader As String,
-      ByVal strFooter As String,
-      ByVal dg As DataGridView)
-
-        Dim cur = Me.Cursor
-        Try
-            Me.Cursor = Cursors.WaitCursor
-
-            Dim pr As New ExcelInterface.CXML("")
-            pr.OpenExcelBook(strPath, strFilename, False, My.Settings.XMLTemplate, False)
-
-
-            '20091005 Sheetname should not contain . / \ etc and not longer than 30.
-            Dim strSheetName As String = strFilename
-            If strSheetName.Length > 30 Then strSheetName = strSheetName.Substring(0, 30)
-            pr.NewSheet(strSheetName,
-                "&amp;LUsing data from " + strFilename + "." + "&amp;CPrinted on &amp;D &amp;T. " + "&amp;RPage &amp;P of &amp;N",
-                True, strFooter)
-            pr.WriteDataGrid(dg, MainDefs.DONOTPRINT, False, 0, False)
-            pr.CloseExcelBook()
-            NAR(pr) ' = Nothing
-        Catch ex As Exception
-            MsgBox("Could not create report." & ex.Message)
-        Finally
-            Me.Cursor = cur
-        End Try
-    End Sub
-
     Protected Sub PrintToExcel(ByVal strFilename As String,
         ByVal strHeader As String,
         ByVal strFooter As String,
@@ -936,20 +905,24 @@ Public Class frmStandard
             Me.Cursor = Cursors.WaitCursor
 
             Dim pr As New ExcelInterface.CXML("")
-            pr.OpenExcelBook(ExcelInterface.Paths.Local, "", strFilename, False, My.Settings.XMLTemplate)
 
-            '20091005 Sheetname should not contain . / \ etc and not longer than 30.
-            Dim strSheetName As String = strFilename
-            If strSheetName.Length > 30 Then strSheetName = strSheetName.Substring(0, 30)
-            pr.NewSheet(strSheetName, _
-                "&amp;LUsing data from " + strFilename + "." + "&amp;CPrinted on &amp;D &amp;T. " + "&amp;RPage &amp;P of &amp;N", _
+            'Returns true if Excel book could not be opened.
+            If pr.OpenExcelBook(ExcelInterface.Paths.Local, "", strFilename, False) = False Then
+
+                '20091005 Sheetname should not contain . / \ etc and not longer than 30.
+                Dim strSheetName As String = strFilename
+                If strSheetName.Length > 30 Then strSheetName = strSheetName.Substring(0, 30)
+                pr.NewSheet(strSheetName,
+                "&amp;LUsing data from " + strFilename + "." + "&amp;CPrinted on &amp;D &amp;T. " + "&amp;RPage &amp;P of &amp;N",
                 True, strFooter)
-            pr.WriteDataGrid(dg, MainDefs.DONOTPRINT, False, 0, False)
-            pr.CloseExcelBook()
-            NAR(pr) ' = Nothing
+                pr.WriteDataGrid(dg, MainDefs.DONOTPRINT, False, 0, False)
+                pr.CloseExcelBook(True)
 
-            'Runtime.GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce
-            GC.Collect(2, GCCollectionMode.Forced)
+                NAR(pr) ' = Nothing
+
+                'Runtime.GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce
+                GC.Collect(2, GCCollectionMode.Forced)
+            End If
 
         Catch ex As Exception
             MsgBox("Could not create report." & ex.Message)

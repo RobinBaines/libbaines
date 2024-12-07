@@ -49,7 +49,7 @@ Public Class CXML
         value = NumberFormatInfo.CurrentInfo
         iRow = 1
     End Sub
-    Private Function GetDirectory(ByVal pPath As Paths, ByVal strSubDirectory As String) As String
+    Public Function GetDirectory(ByVal pPath As Paths, ByVal strSubDirectory As String) As String
 
         'Get the directory using the local/network specifier.
         Dim strPath As String
@@ -95,66 +95,58 @@ Public Class CXML
     Private Sub AdjustRowCount(ByVal iAddRows As Integer)
         RowCount = RowCount + iAddRows
     End Sub
-    Public Sub OpenExcelBook(ByVal pPath As Paths, ByVal strSubDirectory As String, ByVal _strFileName As String,
-   ByVal blnUnique As Boolean, ByVal strTemplatePath As String)
-
+    Public Function OpenExcelBook(ByVal pPath As Paths, ByVal strSubDirectory As String, ByVal _strFileName As String,
+   ByVal blnUnique As Boolean) As Boolean
+        Dim blnFailed As Boolean = False
         strFileName = _strFileName
+        workbook = Nothing
         If strFileName.Length <> 0 Then
 
-            'Create target directory if it does not exist already.
-            If Not My.Computer.FileSystem.DirectoryExists(GetDirectory(pPath, strSubDirectory)) Then
+            Try 'GO899 No permission to write file should be visible for endusers.
 
                 'Create target directory if it does not exist already.
-                My.Computer.FileSystem.CreateDirectory(GetDirectory(pPath, strSubDirectory))
-            End If
+                If Not My.Computer.FileSystem.DirectoryExists(GetDirectory(pPath, strSubDirectory)) Then
 
-            'Try to save the Excel file with the new name.
-            strFileName = MakeUniquePath(0, blnUnique, pPath, strSubDirectory, _strFileName)
-            strOriginalFileName = strFileName
-            workbook = New XLWorkbook()
+                    'Create target directory if it does not exist already.
+                    My.Computer.FileSystem.CreateDirectory(GetDirectory(pPath, strSubDirectory))
+                End If
+
+                Try
+
+                    'Try to save the Excel file with the new name.
+                    strFileName = MakeUniquePath(0, blnUnique, pPath, strSubDirectory, _strFileName)
+                    strOriginalFileName = strFileName
+                    workbook = New XLWorkbook()
+                Catch ex As Exception
+                    blnFailed = True
+                    MsgBox("CXML.OpenExcelBook Could not Create File  " + GetFilePath(pPath, strSubDirectory, strFileName) + " in OpenExcelBook. Check r/w permission. " + ex.Message)
+                End Try
+            Catch ex As Exception
+                blnFailed = True
+                MsgBox("CXML.OpenExcelBook Could not CreateDirectory  " + GetDirectory(pPath, strSubDirectory) + " in OpenExcelBook. Check r/w permission. " + ex.Message)
+            End Try
         End If
-
-    End Sub
+        Return blnFailed
+    End Function
 
     Public Sub NewSheet(ByVal _strSheetName As String,
                         ByVal _strHeaderText As String,
                         ByVal _blnLandScape As Boolean,
                         ByVal _strFooter As String)
-
-        worksheet = workbook.Worksheets.Add(_strSheetName)
-        ' NewSheet(_strSheetName, _strHeaderText, _blnLandScape, _strFooter, "R1")
-
+        If workbook IsNot Nothing Then
+            worksheet = workbook.Worksheets.Add(_strSheetName)
+        End If
     End Sub
 
-    Public Sub OpenExcelBook(ByVal pPath As Paths, ByVal strSubDirectory As String, ByVal strFileName As String,
-        ByVal strHeaderText As String, ByVal strFooter As String, ByVal blnLandscape As Boolean, ByVal strTemplatePath As String)
-        OpenExcelBook(pPath, strSubDirectory, strFileName, False, strTemplatePath)
-        NewSheet(strHeaderText, strHeaderText, blnLandscape, strFooter)
+    Public Sub CloseExcelBook(blnOpen As Boolean)
+        If workbook IsNot Nothing Then
+            workbook.SaveAs(strFileName)
+            If blnOpen Then
+                Process.Start(New ProcessStartInfo(strFileName))
+            End If
+        End If
     End Sub
 
-    Public Sub OpenExcelBook(ByVal pPath As Paths, ByVal strSubDirectory As String, ByVal _strFileName As String,
-        ByVal blnUnique As Boolean, ByVal strTemplatePath As String, ByVal _blnWordWrap As Boolean)
-
-        OpenExcelBook(pPath, strSubDirectory, strFileName, False, strTemplatePath)
-    End Sub
-
-    Public Sub OpenExcelBook(ByVal pPath As Paths, ByVal strSubDirectory As String, ByVal strFileName As String,
-        ByVal strHeaderText As String, ByVal strFooter As String, ByVal blnLandscape As Boolean, ByVal strTemplatePath As String,
-        ByVal _blnWordWrap As Boolean)
-        OpenExcelBook(pPath, strSubDirectory, strFileName, False, strTemplatePath, _blnWordWrap)
-        NewSheet(strHeaderText, strHeaderText, blnLandscape, strFooter)
-    End Sub
-    Public Sub CloseExcelBook()
-        workbook.SaveAs(strFileName)
-        Process.Start(New ProcessStartInfo(strFileName))
-    End Sub
-
-    Public Sub strCreateExcelSheet(ByVal dg As DataGridView, ByVal strFileName As String, ByVal strHeader As String, ByVal strFoot As String,
-ByVal strTagFilter As String, ByVal strXMLTemplate As String)
-        OpenExcelBook(Paths.Local, "", strFileName, strHeader, strFoot, blnLandscape, strXMLTemplate)
-        WriteDataGrid(dg, strTagFilter, False, 0, False)
-        CloseExcelBook()
-    End Sub
 
     ''' <summary>
     ''' It was possible to prevent printing a datagrid by setting the 
@@ -266,90 +258,94 @@ ByVal strTagFilter As String, ByVal strXMLTemplate As String)
         ByVal blnRightAlign As Boolean, ByVal iStyle As ExcelStringFormats,
                                        blnHeader As Boolean) As Integer
 
+
+
+
         'Write the string to Excel using a separate column for each field in the string.
         Dim iCol As Integer
-        iCol = iStartColumn
-        Dim c As XMLExcelCell
+            iCol = iStartColumn
+            Dim c As XMLExcelCell
         'Dim strStyle As String
         'Dim strType As String
+        If workbook IsNot Nothing Then
+            For Each c In Cells
 
-        For Each c In Cells
+                'Mod RPB June 2008. Dg could contain nulls. So replace with "" to avoid gaps.
+                If c.strValue Is Nothing Then
+                    c.strValue = ""
+                End If
 
-            'Mod RPB June 2008. Dg could contain nulls. So replace with "" to avoid gaps.
-            If c.strValue Is Nothing Then
-                c.strValue = ""
-            End If
+                'If c.blnBold = True And c.iStyle = ExcelStringFormats.NoStyle Then
+                '    strStyle = strGetStyle(ExcelStringFormats.Bold10)
+                'Else
+                '    strStyle = strGetStyle(c.iStyle)
+                'End If
+                'strType = strGetType(c.iStyle)
 
-            'If c.blnBold = True And c.iStyle = ExcelStringFormats.NoStyle Then
-            '    strStyle = strGetStyle(ExcelStringFormats.Bold10)
-            'Else
-            '    strStyle = strGetStyle(c.iStyle)
-            'End If
-            'strType = strGetType(c.iStyle)
-
-            If blnHeader = False Then
-                If Not worksheet.Cell(iRow, iCol).Style Is Nothing Then
-                    Dim sNFId As String = ""
-                    If c.NumberFormat.Length > 0 Then
-                        If c.NumberFormat.Substring(0, 1) = "N" Then
-                            If c.NumberFormat.Substring(1, 1) = "0" Then
-                                worksheet.Cell(iRow, iCol).Style.NumberFormat.NumberFormatId = 1
+                If blnHeader = False Then
+                    If Not worksheet.Cell(iRow, iCol).Style Is Nothing Then
+                        Dim sNFId As String = ""
+                        If c.NumberFormat.Length > 0 Then
+                            If c.NumberFormat.Substring(0, 1) = "N" Then
+                                If c.NumberFormat.Substring(1, 1) = "0" Then
+                                    worksheet.Cell(iRow, iCol).Style.NumberFormat.NumberFormatId = 1
+                                Else
+                                    'N1 - N6 => 0.0 - 0.000000
+                                    worksheet.Cell(iRow, iCol).Style.NumberFormat.Format = strPrecision(c.NumberFormat.Substring(1, 1))
+                                End If
                             Else
-                                'N1 - N6 => 0.0 - 0.000000
-                                worksheet.Cell(iRow, iCol).Style.NumberFormat.Format = strPrecision(c.NumberFormat.Substring(1, 1))
-                            End If
-                        Else
-                            If c.NumberFormat.Substring(0, 2) = "\€" Then ' for example \€ 0.0000
-                                worksheet.Cell(iRow, iCol).Style.NumberFormat.Format = "€" + c.NumberFormat.Substring(2)
-                            Else
-                                If c.NumberFormat.Contains("%") Then 'for example 0.000\%
-                                    worksheet.Cell(iRow, iCol).Style.NumberFormat.Format = c.NumberFormat
+                                If c.NumberFormat.Substring(0, 2) = "\€" Then ' for example \€ 0.0000
+                                    worksheet.Cell(iRow, iCol).Style.NumberFormat.Format = "€" + c.NumberFormat.Substring(2)
+                                Else
+                                    If c.NumberFormat.Contains("%") Then 'for example 0.000\%
+                                        worksheet.Cell(iRow, iCol).Style.NumberFormat.Format = c.NumberFormat
+                                    End If
                                 End If
                             End If
                         End If
+                        Try
+                            Dim theValue As Decimal = c.strValue
+                            worksheet.Cell(iRow, iCol).Value = theValue
+                        Catch ex As Exception
+                            worksheet.Cell(iRow, iCol).Style.NumberFormat.NumberFormatId = 0
+                            worksheet.Cell(iRow, iCol).Value = c.strValue
+                        End Try
                     End If
-                    Try
-                        Dim theValue As Decimal = c.strValue
-                        worksheet.Cell(iRow, iCol).Value = theValue
-                    Catch ex As Exception
-                        worksheet.Cell(iRow, iCol).Style.NumberFormat.NumberFormatId = 0
-                        worksheet.Cell(iRow, iCol).Value = c.strValue
-                    End Try
-                End If
-            Else
-
-                worksheet.Cell(iRow, iCol).Style.NumberFormat.NumberFormatId = 0 'is the general format code for Excel.
-                worksheet.Cell(iRow, iCol).Value = c.strValue
-            End If
-
-            If Not worksheet.Cell(iRow, iCol).Style.Font Is Nothing Then
-                worksheet.Cell(iRow, iCol).Style.Font.Bold = (c.blnBold And c.iStyle = ExcelStringFormats.NoStyle)
-            End If
-
-
-            iCol = iCol + 1
-
-        Next c
-
-        Try
-            If blnHeader Then
-                Dim rngTable = worksheet.Range(iRow, iStartColumn, iRow, iCol)
-                'Formatting headers
-                Dim rngHeaders = rngTable.Range(iRow, iStartColumn, iRow, iCol)
-                If blnRightAlign Then
-                    rngHeaders.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right
                 Else
-                    rngHeaders.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center
-                End If
-                rngHeaders.Style.Font.Bold = True
-            End If
-        Catch ex As Exception
-            MsgBox("Error writing Excel header. " + ex.Message)
-        End Try
-        iRow += 1
 
-        AdjustColumnCount(iCol)
-        AdjustRowCount(1)
+                    worksheet.Cell(iRow, iCol).Style.NumberFormat.NumberFormatId = 0 'is the general format code for Excel.
+                    worksheet.Cell(iRow, iCol).Value = c.strValue
+                End If
+
+                If Not worksheet.Cell(iRow, iCol).Style.Font Is Nothing Then
+                    worksheet.Cell(iRow, iCol).Style.Font.Bold = (c.blnBold And c.iStyle = ExcelStringFormats.NoStyle)
+                End If
+
+
+                iCol = iCol + 1
+
+            Next c
+
+            Try
+                If blnHeader Then
+                    Dim rngTable = worksheet.Range(iRow, iStartColumn, iRow, iCol)
+                    'Formatting headers
+                    Dim rngHeaders = rngTable.Range(iRow, iStartColumn, iRow, iCol)
+                    If blnRightAlign Then
+                        rngHeaders.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right
+                    Else
+                        rngHeaders.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center
+                    End If
+                    rngHeaders.Style.Font.Bold = True
+                End If
+            Catch ex As Exception
+                MsgBox("Error writing Excel header. " + ex.Message)
+            End Try
+            iRow += 1
+
+            AdjustColumnCount(iCol)
+            AdjustRowCount(1)
+        End If
 
         Return iCol
     End Function
