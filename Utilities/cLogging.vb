@@ -11,6 +11,7 @@
 '20200430 ReNameLogFile modified to set the Logfile!!
 '20240917 added try/catch with msgbox. Missing r/w permission may be the cause and it proves better to catch this than letting it go.
 '20241127 improved error handling if destination folder of log file does not have r/w access.
+'20250324 GO949 Changed initialisation of clLogging.DebugLogging to True instead of False to avoid having to set to True in existing Services.
 ''------------------------------------------------
 Imports System
 Imports System.IO
@@ -37,7 +38,8 @@ Public Class clLogging
     End Property
 
     'If DebugLogging is true then any calls to LogStart and LogStop will support messages with a msec timer over the start and stop.
-    Private Shared _DebugLogging As Boolean = False
+    '20250324 GO949 Changed initialisation of clLogging.DebugLogging to True instead of False to avoid having to set to True in existing Services.
+    Private Shared _DebugLogging As Boolean = True
     Public Shared Property DebugLogging() As Boolean
         Get
             Return _DebugLogging

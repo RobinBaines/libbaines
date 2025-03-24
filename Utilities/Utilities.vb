@@ -7,6 +7,7 @@
 'Modifications:
 'RPB March 2007 Added blnExecuteFunction 
 '20100105 RPB modified DisplayAForm by Trimming strHeader and strFormName.
+'20250324 GO949 Changed initialisation of clLogging.DebugLogging to True instead of False to avoid having to set to True in existing Services.
 '------------------------------------------------
 Imports System
 Imports System.ComponentModel
