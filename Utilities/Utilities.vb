@@ -8,6 +8,9 @@
 'RPB March 2007 Added blnExecuteFunction 
 '20100105 RPB modified DisplayAForm by Trimming strHeader and strFormName.
 '20250324 GO949 Changed initialisation of clLogging.DebugLogging to True instead of False to avoid having to set to True in existing Services.
+'20251024 Added clLogging.LogFile property to allow a custom file name.
+'20251024 added clLogging.InFix property which is inserted into the LogFile Name.
+'20251024 clLogging.ReNameLogFile(sFilename As String) function is Private instead of Public.
 '------------------------------------------------
 Imports System
 Imports System.ComponentModel

@@ -12,6 +12,9 @@
 '20240917 added try/catch with msgbox. Missing r/w permission may be the cause and it proves better to catch this than letting it go.
 '20241127 improved error handling if destination folder of log file does not have r/w access.
 '20250324 GO949 Changed initialisation of clLogging.DebugLogging to True instead of False to avoid having to set to True in existing Services.
+'20251024 Added clLogging.LogFile property to allow a custom file name.
+'20251024 added clLogging.InFix property which is inserted into the LogFile Name.
+'20251024 clLogging.ReNameLogFile(sFilename As String) function is Private instead of Public.
 ''------------------------------------------------
 Imports System
 Imports System.IO
@@ -19,7 +22,35 @@ Imports System.Reflection
 Imports System.Globalization
 Public Class clLogging
 
-    Private Shared Logfile As String = ReNameLogFile()
+    '20251024 Added clLogging.LogFile property to allow a custom file name.
+    Private Shared _Logfile As String = ReNameLogFile()
+    Public Shared Property Logfile() As String
+        Get
+            Return _Logfile
+        End Get
+        Set(ByVal value As String)
+            Dim strExtension = ".txt"
+            '20251024 Customize the Log File Name.
+            If value.Contains(".") Then
+                strExtension = ""
+            End If
+            _Logfile = Path.Combine(Path.GetDirectoryName(New Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath), "Logfiles",
+                                                value + strExtension)
+        End Set
+    End Property
+
+    '20251024 added clLogging.InFix property which is inserted into the LogFile Name.
+    Private Shared _InFix As String = ""
+    Public Shared Property InFix() As String
+        Get
+            Return _InFix
+        End Get
+        Set(ByVal value As String)
+            _InFix = value
+            Logfile = ReNameLogFile()
+        End Set
+    End Property
+
     Private Shared sw As New Stopwatch
     Private Shared blnStarted As Boolean = False
     Private Shared sw2 As New Stopwatch
@@ -205,30 +236,16 @@ Public Class clLogging
         Return Logfile
     End Function
 
-    Public Shared Function ReNameLogFile(sFilename As String) As String
+
+    '20251024 clLogging.ReNameLogFile(sFilename As String) function is Private instead of Public.
+    Private Shared Function ReNameLogFile(sFilename As String) As String
 
         '20240924 If running on Citrix use unique logfile names for each session.
-        '20240924 The session name will defined and not equal to console if running on citrix. 
-
-        'Dim TheSessionName As String
-        'Returns The value of the environment variable specified by variable, or null if the environment variable is not found.
-        'TheSessionName = Environment.GetEnvironmentVariable("SESSIONNAME")
-        'If TheSessionName Is Nothing Then
-        '    TheSessionName = ""
-        'End If
-
-        'If TheSessionName.ToLower = "console" Then
-        '    TheSessionName = ""
-        'End If
-
-        'If TheSessionName.ToLower <> "" Then
-        '    TheSessionName = TheSessionName + "_"
-        'End If
-
+        '20240924 The session name will defined and not equal to console if running on citrix.
+        '20251024 added Property InFix which is "" by default but may be set to, for example, the hostname.
         Dim sessionid As String = Process.GetCurrentProcess().SessionId.ToString()
-
         Return Path.Combine(Path.GetDirectoryName(New Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath), "Logfiles",
-                                                "Logfile_" + sessionid + "_" +
+                                                "Logfile_" + sessionid + "_" + InFix + "_" +
                                                 sFilename + ".txt")
     End Function
 
